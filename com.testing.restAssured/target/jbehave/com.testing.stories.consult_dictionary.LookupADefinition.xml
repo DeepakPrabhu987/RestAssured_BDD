@@ -1,0 +1,22 @@
+<story path="com/testing/stories/consult_dictionary/LookupADefinition.story" title="Narrative">
+<scenario keyword="Scenario:" title="Rest API basic Look up">
+<examples keyword="Examples:">
+<step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
+<step>And its base path is &lt;BASE_PATH&gt;</step>
+<step>And its query parameter is &lt;QUERY_PARAM&gt;</step>
+<step>When I send the request to RestAPI</step>
+<step>Then the REST API should return me a valid response</step>
+<parameters>
+<names><name>baseURI</name><name>BASE_PATH</name><name>QUERY_PARAM</name></names>
+<values><value>http://services.groupkt.com</value><value>/state</value><value>/get/*/all</value></values>
+</parameters>
+
+<example keyword="Example:">{baseURI=http://services.groupkt.com, BASE_PATH=/state, QUERY_PARAM=/get/*/all}</example>
+<step outcome="successful">Given I have a Base URI <parameter>http://services.groupkt.com</parameter> for the REST API</step>
+<step outcome="pending" keyword="PENDING">And its base path is &lt;BASE_PATH&gt;</step>
+<step outcome="notPerformed" keyword="NOT PERFORMED">And its query parameter is &lt;QUERY_PARAM&gt;</step>
+<step outcome="notPerformed" keyword="NOT PERFORMED">When I send the request to RestAPI</step>
+<step outcome="notPerformed" keyword="NOT PERFORMED">Then the REST API should return me a valid response</step>
+</examples>
+</scenario>
+</story>

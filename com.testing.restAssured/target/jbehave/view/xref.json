@@ -1,0 +1,871 @@
+{"xref": {
+  "stories": [
+    {
+      "story": {
+        "path": "com/testing/stories/consult_dictionary/LookupADefinition.story",
+        "description": {
+          "descriptionAsString": "Narrative"
+        },
+        "narrative": {
+          "inOrderTo": "",
+          "asA": "",
+          "iWantTo": "",
+          "soThat": ""
+        },
+        "meta": {
+          "properties": []
+        },
+        "givenStories": {
+          "givenStories": [],
+          "givenStoriesAsString": "",
+          "examplesTable": {
+            "tableAsString": "",
+            "tableTransformers": {
+              "transformers": [
+                [
+                  "FORMATTING",
+                  {}
+                ],
+                [
+                  "REPLACING",
+                  {}
+                ],
+                [
+                  "FROM_LANDSCAPE",
+                  {}
+                ]
+              ]
+            },
+            "headers": [],
+            "data": [],
+            "properties": {
+              "properties": [
+                {
+                  "@name": "headerSeparator",
+                  "@value": "|"
+                },
+                {
+                  "@name": "valueSeparator",
+                  "@value": "|"
+                },
+                {
+                  "@name": "ignorableSeparator",
+                  "@value": "|--"
+                }
+              ]
+            },
+            "propertiesAsString": "",
+            "namedParameters": []
+          }
+        },
+        "lifecycle": {
+          "before": {
+            "steps": [
+              []
+            ]
+          },
+          "after": []
+        },
+        "scenarios": [
+          {
+            "title": "Rest API basic Look up",
+            "meta": {
+              "properties": []
+            },
+            "givenStories": {
+              "givenStories": [],
+              "givenStoriesAsString": "",
+              "examplesTable": {
+                "tableAsString": "",
+                "tableTransformers": {
+                  "transformers": [
+                    [
+                      "FORMATTING",
+                      {}
+                    ],
+                    [
+                      "REPLACING",
+                      {}
+                    ],
+                    [
+                      "FROM_LANDSCAPE",
+                      {}
+                    ]
+                  ]
+                },
+                "headers": [],
+                "data": [],
+                "properties": {
+                  "properties": [
+                    {
+                      "@name": "headerSeparator",
+                      "@value": "|"
+                    },
+                    {
+                      "@name": "valueSeparator",
+                      "@value": "|"
+                    },
+                    {
+                      "@name": "ignorableSeparator",
+                      "@value": "|--"
+                    }
+                  ]
+                },
+                "propertiesAsString": "",
+                "namedParameters": []
+              }
+            },
+            "examplesTable": {
+              "tableAsString": "|            baseURI             |  BASE_PATH   |    QUERY_PARAM |\n|  http://services.groupkt.com |  /state |  /get/*/all|",
+              "tableTransformers": {
+                "transformers": [
+                  [
+                    "FORMATTING",
+                    {}
+                  ],
+                  [
+                    "REPLACING",
+                    {}
+                  ],
+                  [
+                    "FROM_LANDSCAPE",
+                    {}
+                  ]
+                ]
+              },
+              "headers": [
+                "baseURI",
+                "BASE_PATH",
+                "QUERY_PARAM"
+              ],
+              "data": [
+                [
+                  [
+                    "baseURI",
+                    "http://services.groupkt.com"
+                  ],
+                  [
+                    "BASE_PATH",
+                    "/state"
+                  ],
+                  [
+                    "QUERY_PARAM",
+                    "/get/*/all"
+                  ]
+                ]
+              ],
+              "properties": {
+                "properties": [
+                  {
+                    "@name": "headerSeparator",
+                    "@value": "|"
+                  },
+                  {
+                    "@name": "valueSeparator",
+                    "@value": "|"
+                  },
+                  {
+                    "@name": "ignorableSeparator",
+                    "@value": "|--"
+                  }
+                ]
+              },
+              "propertiesAsString": "",
+              "namedParameters": []
+            },
+            "steps": [
+              "Given I have a Base URI <baseURI> for the REST API",
+              "And its base path is <BASE_PATH>",
+              "And its query parameter is <QUERY_PARAM>",
+              "When I send the request to RestAPI",
+              "Then the REST API should return me a valid response"
+            ]
+          }
+        ],
+        "name": "LookupADefinition.story"
+      },
+      "localizedNarrative": "As a \nI want to \nSo that ",
+      "allowed": true,
+      "status": "FAILED",
+      "givenStories": [],
+      "scenarios": [
+        {
+          "scenario": {
+            "title": "Rest API basic Look up",
+            "meta": {
+              "properties": []
+            },
+            "givenStories": {
+              "givenStories": [],
+              "givenStoriesAsString": "",
+              "examplesTable": {
+                "tableAsString": "",
+                "tableTransformers": {
+                  "transformers": [
+                    [
+                      "FORMATTING",
+                      {}
+                    ],
+                    [
+                      "REPLACING",
+                      {}
+                    ],
+                    [
+                      "FROM_LANDSCAPE",
+                      {}
+                    ]
+                  ]
+                },
+                "headers": [],
+                "data": [],
+                "properties": {
+                  "properties": [
+                    {
+                      "@name": "headerSeparator",
+                      "@value": "|"
+                    },
+                    {
+                      "@name": "valueSeparator",
+                      "@value": "|"
+                    },
+                    {
+                      "@name": "ignorableSeparator",
+                      "@value": "|--"
+                    }
+                  ]
+                },
+                "propertiesAsString": "",
+                "namedParameters": []
+              }
+            },
+            "examplesTable": {
+              "tableAsString": "|            baseURI             |  BASE_PATH   |    QUERY_PARAM |\n|  http://services.groupkt.com |  /state |  /get/*/all|",
+              "tableTransformers": {
+                "transformers": [
+                  [
+                    "FORMATTING",
+                    {}
+                  ],
+                  [
+                    "REPLACING",
+                    {}
+                  ],
+                  [
+                    "FROM_LANDSCAPE",
+                    {}
+                  ]
+                ]
+              },
+              "headers": [
+                "baseURI",
+                "BASE_PATH",
+                "QUERY_PARAM"
+              ],
+              "data": [
+                [
+                  [
+                    "baseURI",
+                    "http://services.groupkt.com"
+                  ],
+                  [
+                    "BASE_PATH",
+                    "/state"
+                  ],
+                  [
+                    "QUERY_PARAM",
+                    "/get/*/all"
+                  ]
+                ]
+              ],
+              "properties": {
+                "properties": [
+                  {
+                    "@name": "headerSeparator",
+                    "@value": "|"
+                  },
+                  {
+                    "@name": "valueSeparator",
+                    "@value": "|"
+                  },
+                  {
+                    "@name": "ignorableSeparator",
+                    "@value": "|--"
+                  }
+                ]
+              },
+              "propertiesAsString": "",
+              "namedParameters": []
+            },
+            "steps": [
+              "Given I have a Base URI <baseURI> for the REST API",
+              "And its base path is <BASE_PATH>",
+              "And its query parameter is <QUERY_PARAM>",
+              "When I send the request to RestAPI",
+              "Then the REST API should return me a valid response"
+            ]
+          },
+          "storyPath": "com/testing/stories/consult_dictionary/LookupADefinition.story",
+          "allowed": true,
+          "examplePerformableScenarios": [
+            {
+              "parameters": [
+                [
+                  "baseURI",
+                  "http://services.groupkt.com"
+                ],
+                [
+                  "BASE_PATH",
+                  "/state"
+                ],
+                [
+                  "QUERY_PARAM",
+                  "/get/*/all"
+                ]
+              ],
+              "givenStories": [],
+              "beforeSteps": {
+                "matches": []
+              },
+              "steps": {
+                "matches": [],
+                "results": [
+                  {
+                    "step": "Given I have a Base URI <baseURI> for the REST API",
+                    "type": "SUCCESSFUL",
+                    "parametrisedStep": "Given I have a Base URI ｟http://services.groupkt.com｠ for the REST API",
+                    "durationInMillis": 800,
+                    "start": 1505763880593,
+                    "end": 1505763881393
+                  },
+                  {
+                    "step": "And its base path is <BASE_PATH>",
+                    "type": "PENDING",
+                    "throwable": {
+                      "@class": "org.jbehave.core.failures.PendingStepFound",
+                      "detailMessage": "And its base path is <BASE_PATH>",
+                      "stackTrace": [
+                        "org.jbehave.core.steps.AbstractStepResult$Pending.<init>(AbstractStepResult.java:58)",
+                        "org.jbehave.core.steps.AbstractStepResult.pending(AbstractStepResult.java:192)",
+                        "org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:740)",
+                        "org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:346)",
+                        "org.jbehave.core.embedder.PerformableTree$PerformableSteps.perform(PerformableTree.java:1090)",
+                        "org.jbehave.core.embedder.PerformableTree$AbstractPerformableScenario.performRestartableSteps(PerformableTree.java:955)",
+                        "org.jbehave.core.embedder.PerformableTree$ExamplePerformableScenario.perform(PerformableTree.java:1029)",
+                        "org.jbehave.core.embedder.PerformableTree$PerformableScenario.perform(PerformableTree.java:899)",
+                        "org.jbehave.core.embedder.PerformableTree$PerformableStory.performScenarios(PerformableTree.java:825)",
+                        "org.jbehave.core.embedder.PerformableTree$PerformableStory.perform(PerformableTree.java:798)",
+                        "org.jbehave.core.embedder.PerformableTree.performCancellable(PerformableTree.java:422)",
+                        "org.jbehave.core.embedder.PerformableTree.perform(PerformableTree.java:393)",
+                        "org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:292)",
+                        "org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:266)",
+                        "java.util.concurrent.FutureTask.run(FutureTask.java:266)",
+                        "java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)",
+                        "java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)",
+                        "java.lang.Thread.run(Thread.java:745)"
+                      ],
+                      "suppressedExceptions": [
+                        [],
+                        []
+                      ],
+                      "uuid": "063cd5bf-8bdc-43a2-b173-6513c5e0d617"
+                    },
+                    "durationInMillis": 0,
+                    "start": 0,
+                    "end": 0
+                  },
+                  {
+                    "step": "And its query parameter is <QUERY_PARAM>",
+                    "type": "NOT_PERFORMED",
+                    "durationInMillis": 0,
+                    "start": 0,
+                    "end": 0
+                  },
+                  {
+                    "step": "When I send the request to RestAPI",
+                    "type": "NOT_PERFORMED",
+                    "parametrisedStep": "When I send the request to RestAPI",
+                    "durationInMillis": 0,
+                    "start": 0,
+                    "end": 0
+                  },
+                  {
+                    "step": "Then the REST API should return me a valid response",
+                    "type": "NOT_PERFORMED",
+                    "parametrisedStep": "Then the REST API should return me a valid response",
+                    "durationInMillis": 0,
+                    "start": 0,
+                    "end": 0
+                  }
+                ]
+              },
+              "afterSteps": {
+                "matches": []
+              },
+              "storyAndScenarioMeta": {
+                "properties": []
+              },
+              "scenario": {
+                "title": "Rest API basic Look up",
+                "meta": {
+                  "properties": []
+                },
+                "givenStories": {
+                  "givenStories": [],
+                  "givenStoriesAsString": "",
+                  "examplesTable": {
+                    "tableAsString": "",
+                    "tableTransformers": {
+                      "transformers": [
+                        [
+                          "FORMATTING",
+                          {}
+                        ],
+                        [
+                          "REPLACING",
+                          {}
+                        ],
+                        [
+                          "FROM_LANDSCAPE",
+                          {}
+                        ]
+                      ]
+                    },
+                    "headers": [],
+                    "data": [],
+                    "properties": {
+                      "properties": [
+                        {
+                          "@name": "headerSeparator",
+                          "@value": "|"
+                        },
+                        {
+                          "@name": "valueSeparator",
+                          "@value": "|"
+                        },
+                        {
+                          "@name": "ignorableSeparator",
+                          "@value": "|--"
+                        }
+                      ]
+                    },
+                    "propertiesAsString": "",
+                    "namedParameters": []
+                  }
+                },
+                "examplesTable": {
+                  "tableAsString": "|            baseURI             |  BASE_PATH   |    QUERY_PARAM |\n|  http://services.groupkt.com |  /state |  /get/*/all|",
+                  "tableTransformers": {
+                    "transformers": [
+                      [
+                        "FORMATTING",
+                        {}
+                      ],
+                      [
+                        "REPLACING",
+                        {}
+                      ],
+                      [
+                        "FROM_LANDSCAPE",
+                        {}
+                      ]
+                    ]
+                  },
+                  "headers": [
+                    "baseURI",
+                    "BASE_PATH",
+                    "QUERY_PARAM"
+                  ],
+                  "data": [
+                    [
+                      [
+                        "baseURI",
+                        "http://services.groupkt.com"
+                      ],
+                      [
+                        "BASE_PATH",
+                        "/state"
+                      ],
+                      [
+                        "QUERY_PARAM",
+                        "/get/*/all"
+                      ]
+                    ]
+                  ],
+                  "properties": {
+                    "properties": [
+                      {
+                        "@name": "headerSeparator",
+                        "@value": "|"
+                      },
+                      {
+                        "@name": "valueSeparator",
+                        "@value": "|"
+                      },
+                      {
+                        "@name": "ignorableSeparator",
+                        "@value": "|--"
+                      }
+                    ]
+                  },
+                  "propertiesAsString": "",
+                  "namedParameters": []
+                },
+                "steps": [
+                  "Given I have a Base URI <baseURI> for the REST API",
+                  "And its base path is <BASE_PATH>",
+                  "And its query parameter is <QUERY_PARAM>",
+                  "When I send the request to RestAPI",
+                  "Then the REST API should return me a valid response"
+                ]
+              }
+            }
+          ],
+          "status": "FAILED"
+        }
+      ],
+      "beforeSteps": {},
+      "afterSteps": {},
+      "timing": {
+        "durationInMillis": 942,
+        "start": 1505763880493,
+        "end": 1505763881435
+      },
+      "givenStory": false
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "title": "Rest API basic Look up",
+        "meta": {
+          "properties": []
+        },
+        "givenStories": {
+          "givenStories": [],
+          "givenStoriesAsString": "",
+          "examplesTable": {
+            "tableAsString": "",
+            "tableTransformers": {
+              "transformers": [
+                [
+                  "FORMATTING",
+                  {}
+                ],
+                [
+                  "REPLACING",
+                  {}
+                ],
+                [
+                  "FROM_LANDSCAPE",
+                  {}
+                ]
+              ]
+            },
+            "headers": [],
+            "data": [],
+            "properties": {
+              "properties": [
+                {
+                  "@name": "headerSeparator",
+                  "@value": "|"
+                },
+                {
+                  "@name": "valueSeparator",
+                  "@value": "|"
+                },
+                {
+                  "@name": "ignorableSeparator",
+                  "@value": "|--"
+                }
+              ]
+            },
+            "propertiesAsString": "",
+            "namedParameters": []
+          }
+        },
+        "examplesTable": {
+          "tableAsString": "|            baseURI             |  BASE_PATH   |    QUERY_PARAM |\n|  http://services.groupkt.com |  /state |  /get/*/all|",
+          "tableTransformers": {
+            "transformers": [
+              [
+                "FORMATTING",
+                {}
+              ],
+              [
+                "REPLACING",
+                {}
+              ],
+              [
+                "FROM_LANDSCAPE",
+                {}
+              ]
+            ]
+          },
+          "headers": [
+            "baseURI",
+            "BASE_PATH",
+            "QUERY_PARAM"
+          ],
+          "data": [
+            [
+              [
+                "baseURI",
+                "http://services.groupkt.com"
+              ],
+              [
+                "BASE_PATH",
+                "/state"
+              ],
+              [
+                "QUERY_PARAM",
+                "/get/*/all"
+              ]
+            ]
+          ],
+          "properties": {
+            "properties": [
+              {
+                "@name": "headerSeparator",
+                "@value": "|"
+              },
+              {
+                "@name": "valueSeparator",
+                "@value": "|"
+              },
+              {
+                "@name": "ignorableSeparator",
+                "@value": "|--"
+              }
+            ]
+          },
+          "propertiesAsString": "",
+          "namedParameters": []
+        },
+        "steps": [
+          "Given I have a Base URI <baseURI> for the REST API",
+          "And its base path is <BASE_PATH>",
+          "And its query parameter is <QUERY_PARAM>",
+          "When I send the request to RestAPI",
+          "Then the REST API should return me a valid response"
+        ]
+      },
+      "storyPath": "com/testing/stories/consult_dictionary/LookupADefinition.story",
+      "allowed": true,
+      "examplePerformableScenarios": [
+        {
+          "parameters": [
+            [
+              "baseURI",
+              "http://services.groupkt.com"
+            ],
+            [
+              "BASE_PATH",
+              "/state"
+            ],
+            [
+              "QUERY_PARAM",
+              "/get/*/all"
+            ]
+          ],
+          "givenStories": [],
+          "beforeSteps": {
+            "matches": []
+          },
+          "steps": {
+            "matches": [],
+            "results": [
+              {
+                "step": "Given I have a Base URI <baseURI> for the REST API",
+                "type": "SUCCESSFUL",
+                "parametrisedStep": "Given I have a Base URI ｟http://services.groupkt.com｠ for the REST API",
+                "durationInMillis": 800,
+                "start": 1505763880593,
+                "end": 1505763881393
+              },
+              {
+                "step": "And its base path is <BASE_PATH>",
+                "type": "PENDING",
+                "throwable": {
+                  "@class": "org.jbehave.core.failures.PendingStepFound",
+                  "detailMessage": "And its base path is <BASE_PATH>",
+                  "stackTrace": [
+                    "org.jbehave.core.steps.AbstractStepResult$Pending.<init>(AbstractStepResult.java:58)",
+                    "org.jbehave.core.steps.AbstractStepResult.pending(AbstractStepResult.java:192)",
+                    "org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:740)",
+                    "org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:346)",
+                    "org.jbehave.core.embedder.PerformableTree$PerformableSteps.perform(PerformableTree.java:1090)",
+                    "org.jbehave.core.embedder.PerformableTree$AbstractPerformableScenario.performRestartableSteps(PerformableTree.java:955)",
+                    "org.jbehave.core.embedder.PerformableTree$ExamplePerformableScenario.perform(PerformableTree.java:1029)",
+                    "org.jbehave.core.embedder.PerformableTree$PerformableScenario.perform(PerformableTree.java:899)",
+                    "org.jbehave.core.embedder.PerformableTree$PerformableStory.performScenarios(PerformableTree.java:825)",
+                    "org.jbehave.core.embedder.PerformableTree$PerformableStory.perform(PerformableTree.java:798)",
+                    "org.jbehave.core.embedder.PerformableTree.performCancellable(PerformableTree.java:422)",
+                    "org.jbehave.core.embedder.PerformableTree.perform(PerformableTree.java:393)",
+                    "org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:292)",
+                    "org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:266)",
+                    "java.util.concurrent.FutureTask.run(FutureTask.java:266)",
+                    "java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)",
+                    "java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)",
+                    "java.lang.Thread.run(Thread.java:745)"
+                  ],
+                  "suppressedExceptions": [
+                    [],
+                    []
+                  ],
+                  "uuid": "063cd5bf-8bdc-43a2-b173-6513c5e0d617"
+                },
+                "durationInMillis": 0,
+                "start": 0,
+                "end": 0
+              },
+              {
+                "step": "And its query parameter is <QUERY_PARAM>",
+                "type": "NOT_PERFORMED",
+                "durationInMillis": 0,
+                "start": 0,
+                "end": 0
+              },
+              {
+                "step": "When I send the request to RestAPI",
+                "type": "NOT_PERFORMED",
+                "parametrisedStep": "When I send the request to RestAPI",
+                "durationInMillis": 0,
+                "start": 0,
+                "end": 0
+              },
+              {
+                "step": "Then the REST API should return me a valid response",
+                "type": "NOT_PERFORMED",
+                "parametrisedStep": "Then the REST API should return me a valid response",
+                "durationInMillis": 0,
+                "start": 0,
+                "end": 0
+              }
+            ]
+          },
+          "afterSteps": {
+            "matches": []
+          },
+          "storyAndScenarioMeta": {
+            "properties": []
+          },
+          "scenario": {
+            "title": "Rest API basic Look up",
+            "meta": {
+              "properties": []
+            },
+            "givenStories": {
+              "givenStories": [],
+              "givenStoriesAsString": "",
+              "examplesTable": {
+                "tableAsString": "",
+                "tableTransformers": {
+                  "transformers": [
+                    [
+                      "FORMATTING",
+                      {}
+                    ],
+                    [
+                      "REPLACING",
+                      {}
+                    ],
+                    [
+                      "FROM_LANDSCAPE",
+                      {}
+                    ]
+                  ]
+                },
+                "headers": [],
+                "data": [],
+                "properties": {
+                  "properties": [
+                    {
+                      "@name": "headerSeparator",
+                      "@value": "|"
+                    },
+                    {
+                      "@name": "valueSeparator",
+                      "@value": "|"
+                    },
+                    {
+                      "@name": "ignorableSeparator",
+                      "@value": "|--"
+                    }
+                  ]
+                },
+                "propertiesAsString": "",
+                "namedParameters": []
+              }
+            },
+            "examplesTable": {
+              "tableAsString": "|            baseURI             |  BASE_PATH   |    QUERY_PARAM |\n|  http://services.groupkt.com |  /state |  /get/*/all|",
+              "tableTransformers": {
+                "transformers": [
+                  [
+                    "FORMATTING",
+                    {}
+                  ],
+                  [
+                    "REPLACING",
+                    {}
+                  ],
+                  [
+                    "FROM_LANDSCAPE",
+                    {}
+                  ]
+                ]
+              },
+              "headers": [
+                "baseURI",
+                "BASE_PATH",
+                "QUERY_PARAM"
+              ],
+              "data": [
+                [
+                  [
+                    "baseURI",
+                    "http://services.groupkt.com"
+                  ],
+                  [
+                    "BASE_PATH",
+                    "/state"
+                  ],
+                  [
+                    "QUERY_PARAM",
+                    "/get/*/all"
+                  ]
+                ]
+              ],
+              "properties": {
+                "properties": [
+                  {
+                    "@name": "headerSeparator",
+                    "@value": "|"
+                  },
+                  {
+                    "@name": "valueSeparator",
+                    "@value": "|"
+                  },
+                  {
+                    "@name": "ignorableSeparator",
+                    "@value": "|--"
+                  }
+                ]
+              },
+              "propertiesAsString": "",
+              "namedParameters": []
+            },
+            "steps": [
+              "Given I have a Base URI <baseURI> for the REST API",
+              "And its base path is <BASE_PATH>",
+              "And its query parameter is <QUERY_PARAM>",
+              "When I send the request to RestAPI",
+              "Then the REST API should return me a valid response"
+            ]
+          }
+        }
+      ],
+      "status": "FAILED"
+    }
+  ]
+}}

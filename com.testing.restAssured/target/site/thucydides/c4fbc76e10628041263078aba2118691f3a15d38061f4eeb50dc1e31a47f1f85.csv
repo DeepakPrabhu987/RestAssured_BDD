@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Lookup a definition","Looking up the definition of 'apple'","ERROR","2017-09-17T10:01:44.921Z","0.0","0.21"
+"Lookup a definition","Looking up the definition of 'pear'","ERROR","2017-09-17T10:01:45.246Z","0.0","0.02"
+"Lookup a definition","Rest API basic Look up","PENDING","2017-09-17T13:19:07.932Z","0.0","0.57"
