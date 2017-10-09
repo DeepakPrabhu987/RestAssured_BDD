@@ -1,21 +1,25 @@
+
 package bin;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+//============POJO Class==============//
 
 
 public class BaseClass {
 
-@SerializedName("RestResponse")
-@Expose
-private RestResponse restResponse;
+    @SerializedName("hotels")
+    @Expose
+    private List<Hotel> hotels = null;
 
-public RestResponse getRestResponse() {
-return restResponse;
-}
+    public List<Hotel> getHotels() {
+        return hotels;
+    }
 
-public void setRestResponse(RestResponse restResponse) {
-this.restResponse = restResponse;
-}
+    public void setHotels(List<Hotel> hotels) {
+        this.hotels = hotels;
+    }
 
 }

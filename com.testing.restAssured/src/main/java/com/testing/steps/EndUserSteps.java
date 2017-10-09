@@ -1,42 +1,105 @@
 package com.testing.steps;
 
-import com.testing.pages.DictionaryPage;
+
+
+
+
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+
+import io.restassured.response.Response;
+import junit.framework.Assert;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import static ch.lambdaj.Lambda.join;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.hasItem;
 
-public class EndUserSteps extends ScenarioSteps {
 
-    DictionaryPage dictionaryPage;
+public class EndUserSteps extends ScenarioSteps{
 
-    @Step
-    public void enters(String keyword) {
-        dictionaryPage.enter_keywords(keyword);
-    }
 
-    @Step
-    public void starts_search() {
-        dictionaryPage.lookup_terms();
-    }
 
-    @Step
-    public void should_see_definition(String definition) {
-        assertThat(dictionaryPage.getDefinitions(), hasItem(containsString(definition)));
-    }
 
-    @Step
-    public void is_the_home_page() {
-        dictionaryPage.open();
-    }
+	public  String QUERY_PARAM;
+	public String myResponse;
+	public String ENDPOINT;
+	public Response  Response;
 
-    @Step
-    public void looks_for(String term) {
-        enters(term);
-        starts_search();
-    }
+@Step
+	public void SetBaseURI(String baseURI) {
+
+		RestAssured.baseURI=baseURI;
+		
+
+	}
+
+
+@Step
+	public void addBasePath(String path) {
+
+		RestAssured.basePath=path;
+
+	}
+
+
+
+
+
+
+@Step
+	public void addQueryParam(String queryParam)
+
+	{
+
+		QUERY_PARAM = queryParam;
+
+	}
+@Step
+	public void sendRequest(String requestType, String msgBody){
+	
+	System.out.println(ENDPOINT);
+
+	
+	switch(requestType)
+	
+	{
+	case "GET": Response=RestAssured.given().contentType(ContentType.JSON).get(ENDPOINT);
+	break;
+	case "POST":Response= RestAssured.given().contentType(ContentType.JSON).body(msgBody).when().post(ENDPOINT);
+	break;
+
+	}
+	
+
+	 myResponse = Response.asString();
+
+	}  
+
+@SuppressWarnings("deprecation")
+@Step
+
+	public void  ResponseCheck()
+	{
+	
+	    Assert.assertTrue("Response Status Code Check", Response.statusCode()==200);
+	    
+		
+		
+	}
+
+
+
+
+
+	public void addEndPoint(String endpoint) {
+		
+		
+		 this.ENDPOINT=endpoint;
+		
+	}
+
+
+
 }
+
+

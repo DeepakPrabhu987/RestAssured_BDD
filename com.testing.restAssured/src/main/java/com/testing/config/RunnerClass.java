@@ -16,7 +16,7 @@ public class RunnerClass extends SerenityStories {
 	 
 		public void dsd()
 		{
-			findStoriesCalled("*.story");
+			findStoriesCalled("**/*.story");
 			runSerenity().inASingleSession();
 			
 		}

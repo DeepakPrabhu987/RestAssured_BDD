@@ -1,0 +1,64 @@
+<story path="com/testing/stories/consult_dictionary/MyHotelService_Validation.story" title="Narrative">
+<scenario keyword="Scenario:" title="Verify my local host API Call">
+<examples keyword="Examples:">
+<step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
+<step>And its base path is &lt;BASE_PATH&gt;</step>
+<step>And its endpoint is &lt;ENDPOINT&gt;</step>
+<step>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</step>
+<step>Then the REST API should return me a valid response</step>
+<parameters>
+<names><name>baseURI</name><name>BASE_PATH</name><name>ENDPOINT</name><name>REQUEST_TYPE</name></names>
+<values><value>http://localhost:9999/com.jaxrs.api</value><value>/webapi/hotels</value><value>/getAll</value><value>GET</value></values>
+</parameters>
+
+<example keyword="Example:">{baseURI=http://localhost:9999/com.jaxrs.api, BASE_PATH=/webapi/hotels, ENDPOINT=/getAll, REQUEST_TYPE=GET}</example>
+<step outcome="successful">Given I have a Base URI <parameter>http://localhost:9999/com.jaxrs.api</parameter> for the REST API</step>
+<step outcome="successful">And its base path is <parameter>/webapi/hotels</parameter></step>
+<step outcome="successful">And its endpoint is <parameter>/getAll</parameter></step>
+<step outcome="successful">When I send the <parameter>GET</parameter> request to RestAPI</step>
+<step outcome="successful">Then the REST API should return me a valid response</step>
+</examples>
+</scenario>
+<scenario keyword="Scenario:" title="Verify the REST response for a GET request returns all the mandatory fields">
+<examples keyword="Examples:">
+<step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
+<step>And its base path is &lt;BASE_PATH&gt;</step>
+<step>And its endpoint is &lt;ENDPOINT&gt;</step>
+<step>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</step>
+<step>Then all the mandatory fields should be returned in the response</step>
+<parameters>
+<names><name>baseURI</name><name>BASE_PATH</name><name>ENDPOINT</name><name>REQUEST_TYPE</name></names>
+<values><value>http://localhost:9999/com.jaxrs.api</value><value>/webapi/hotels</value><value>/getAll</value><value>GET</value></values>
+</parameters>
+
+<example keyword="Example:">{baseURI=http://localhost:9999/com.jaxrs.api, BASE_PATH=/webapi/hotels, ENDPOINT=/getAll, REQUEST_TYPE=GET}</example>
+<step outcome="successful">Given I have a Base URI <parameter>http://localhost:9999/com.jaxrs.api</parameter> for the REST API</step>
+<step outcome="successful">And its base path is <parameter>/webapi/hotels</parameter></step>
+<step outcome="successful">And its endpoint is <parameter>/getAll</parameter></step>
+<step outcome="successful">When I send the <parameter>GET</parameter> request to RestAPI</step>
+<step outcome="successful">Then all the mandatory fields should be returned in the response</step>
+</examples>
+</scenario>
+<scenario keyword="Scenario:" title="Verify the REST response after the POST request">
+<examples keyword="Examples:">
+<step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
+<step>And its base path is &lt;BASE_PATH&gt;</step>
+<step>And its endpoint is &lt;ENDPOINT&gt;</step>
+<step>And its body message is &lt;BODY&gt;</step>
+<step>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</step>
+<step>Then the REST API should return me a valid response</step>
+<parameters>
+<names><name>baseURI</name><name>BASE_PATH</name><name>ENDPOINT</name><name>REQUEST_TYPE</name><name>BODY</name></names>
+<values><value>http://localhost:9999/com.jaxrs.api</value><value>/webapi/hotels</value><value>/add</value><value>POST</value><value>{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}</value></values>
+</parameters>
+
+<example keyword="Example:">{baseURI=http://localhost:9999/com.jaxrs.api, BASE_PATH=/webapi/hotels, ENDPOINT=/add, REQUEST_TYPE=POST, BODY={&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}}</example>
+<step outcome="successful">Given I have a Base URI <parameter>http://localhost:9999/com.jaxrs.api</parameter> for the REST API</step>
+<step outcome="successful">And its base path is <parameter>/webapi/hotels</parameter></step>
+<step outcome="successful">And its endpoint is <parameter>/add</parameter></step>
+<step outcome="successful">And its body message is <parameter>{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}</parameter></step>
+<step outcome="successful">When I send the <parameter>POST</parameter> request to RestAPI</step>
+<step outcome="successful">Then the REST API should return me a valid response</step>
+</examples>
+</scenario>
+</story>

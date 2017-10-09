@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Narrative","Verify my local host API Call","SUCCESS","18:47:24","0.0","4.24"
+"Narrative","Verify the REST response for a GET request returns all the mandatory fields","SUCCESS","18:47:28","0.0","0.63"
+"Narrative","Verify the REST response after the POST request","SUCCESS","18:47:28","0.0","1.14"

@@ -1,6 +1,6 @@
 #org.jbehave.core.embedder.StoryManager
-#Tue Sep 19 01:14:41 IST 2017
-com/testing/stories/consult_dictionary/LookupADefinition.story=0
+#Sun Oct 08 18:47:30 IST 2017
+com/testing/stories/consult_dictionary/MyHotelService_Validation.story=6000
 threads=1
-total=0
-threadAverage=0
+total=6000
+threadAverage=6000

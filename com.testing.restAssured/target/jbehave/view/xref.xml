@@ -2,7 +2,7 @@
   <stories>
     <performableStory>
       <story>
-        <path>com/testing/stories/consult_dictionary/LookupADefinition.story</path>
+        <path>com/testing/stories/consult_dictionary/MyHotelService_Validation.story</path>
         <description>
           <descriptionAsString>Narrative</descriptionAsString>
         </description>
@@ -59,7 +59,7 @@
         </lifecycle>
         <scenarios>
           <scenario>
-            <title>Rest API basic Look up</title>
+            <title>Verify my local host API Call</title>
             <meta>
               <properties/>
             </meta>
@@ -98,8 +98,8 @@
               </examplesTable>
             </givenStories>
             <examplesTable>
-              <tableAsString>|            baseURI             |  BASE_PATH   |    QUERY_PARAM |
-|  http://services.groupkt.com |  /state |  /get/*/all|</tableAsString>
+              <tableAsString>|            baseURI             |  BASE_PATH   | ENDPOINT|REQUEST_TYPE|
+|  http://localhost:9999/com.jaxrs.api| /webapi/hotels  |/getAll|GET|</tableAsString>
               <tableTransformers>
                 <transformers>
                   <entry>
@@ -119,21 +119,26 @@
               <headers>
                 <string>baseURI</string>
                 <string>BASE_PATH</string>
-                <string>QUERY_PARAM</string>
+                <string>ENDPOINT</string>
+                <string>REQUEST_TYPE</string>
               </headers>
               <data>
                 <linked-hash-map>
                   <entry>
                     <string>baseURI</string>
-                    <string>http://services.groupkt.com</string>
+                    <string>http://localhost:9999/com.jaxrs.api</string>
                   </entry>
                   <entry>
                     <string>BASE_PATH</string>
-                    <string>/state</string>
+                    <string>/webapi/hotels</string>
                   </entry>
                   <entry>
-                    <string>QUERY_PARAM</string>
-                    <string>/get/*/all</string>
+                    <string>ENDPOINT</string>
+                    <string>/getAll</string>
+                  </entry>
+                  <entry>
+                    <string>REQUEST_TYPE</string>
+                    <string>GET</string>
                   </entry>
                 </linked-hash-map>
               </data>
@@ -150,24 +155,234 @@
             <steps>
               <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
               <string>And its base path is &lt;BASE_PATH&gt;</string>
-              <string>And its query parameter is &lt;QUERY_PARAM&gt;</string>
-              <string>When I send the request to RestAPI</string>
+              <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+              <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+              <string>Then the REST API should return me a valid response</string>
+            </steps>
+          </scenario>
+          <scenario>
+            <title>Verify the REST response for a GET request returns all the mandatory fields</title>
+            <meta>
+              <properties/>
+            </meta>
+            <givenStories>
+              <givenStories/>
+              <givenStoriesAsString></givenStoriesAsString>
+              <examplesTable>
+                <tableAsString></tableAsString>
+                <tableTransformers>
+                  <transformers>
+                    <entry>
+                      <string>FORMATTING</string>
+                      <formatting/>
+                    </entry>
+                    <entry>
+                      <string>REPLACING</string>
+                      <replacing/>
+                    </entry>
+                    <entry>
+                      <string>FROM_LANDSCAPE</string>
+                      <fromLandscape/>
+                    </entry>
+                  </transformers>
+                </tableTransformers>
+                <headers/>
+                <data/>
+                <properties>
+                  <properties>
+                    <property name="headerSeparator" value="|"/>
+                    <property name="valueSeparator" value="|"/>
+                    <property name="ignorableSeparator" value="|--"/>
+                  </properties>
+                </properties>
+                <propertiesAsString></propertiesAsString>
+                <namedParameters/>
+              </examplesTable>
+            </givenStories>
+            <examplesTable>
+              <tableAsString>|            baseURI             |  BASE_PATH   |    ENDPOINT |REQUEST_TYPE|
+|  http://localhost:9999/com.jaxrs.api|  /webapi/hotels | /getAll|GET|</tableAsString>
+              <tableTransformers>
+                <transformers>
+                  <entry>
+                    <string>FORMATTING</string>
+                    <formatting/>
+                  </entry>
+                  <entry>
+                    <string>REPLACING</string>
+                    <replacing/>
+                  </entry>
+                  <entry>
+                    <string>FROM_LANDSCAPE</string>
+                    <fromLandscape/>
+                  </entry>
+                </transformers>
+              </tableTransformers>
+              <headers>
+                <string>baseURI</string>
+                <string>BASE_PATH</string>
+                <string>ENDPOINT</string>
+                <string>REQUEST_TYPE</string>
+              </headers>
+              <data>
+                <linked-hash-map>
+                  <entry>
+                    <string>baseURI</string>
+                    <string>http://localhost:9999/com.jaxrs.api</string>
+                  </entry>
+                  <entry>
+                    <string>BASE_PATH</string>
+                    <string>/webapi/hotels</string>
+                  </entry>
+                  <entry>
+                    <string>ENDPOINT</string>
+                    <string>/getAll</string>
+                  </entry>
+                  <entry>
+                    <string>REQUEST_TYPE</string>
+                    <string>GET</string>
+                  </entry>
+                </linked-hash-map>
+              </data>
+              <properties>
+                <properties>
+                  <property name="headerSeparator" value="|"/>
+                  <property name="valueSeparator" value="|"/>
+                  <property name="ignorableSeparator" value="|--"/>
+                </properties>
+              </properties>
+              <propertiesAsString></propertiesAsString>
+              <namedParameters/>
+            </examplesTable>
+            <steps>
+              <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+              <string>And its base path is &lt;BASE_PATH&gt;</string>
+              <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+              <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+              <string>Then all the mandatory fields should be returned in the response</string>
+            </steps>
+          </scenario>
+          <scenario>
+            <title>Verify the REST response after the POST request</title>
+            <meta>
+              <properties/>
+            </meta>
+            <givenStories>
+              <givenStories/>
+              <givenStoriesAsString></givenStoriesAsString>
+              <examplesTable>
+                <tableAsString></tableAsString>
+                <tableTransformers>
+                  <transformers>
+                    <entry>
+                      <string>FORMATTING</string>
+                      <formatting/>
+                    </entry>
+                    <entry>
+                      <string>REPLACING</string>
+                      <replacing/>
+                    </entry>
+                    <entry>
+                      <string>FROM_LANDSCAPE</string>
+                      <fromLandscape/>
+                    </entry>
+                  </transformers>
+                </tableTransformers>
+                <headers/>
+                <data/>
+                <properties>
+                  <properties>
+                    <property name="headerSeparator" value="|"/>
+                    <property name="valueSeparator" value="|"/>
+                    <property name="ignorableSeparator" value="|--"/>
+                  </properties>
+                </properties>
+                <propertiesAsString></propertiesAsString>
+                <namedParameters/>
+              </examplesTable>
+            </givenStories>
+            <examplesTable>
+              <tableAsString>|            baseURI             |  BASE_PATH   |    ENDPOINT | REQUEST_TYPE|BODY|
+|  http://localhost:9999/com.jaxrs.api|  /webapi/hotels | /add|POST| {&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}|</tableAsString>
+              <tableTransformers>
+                <transformers>
+                  <entry>
+                    <string>FORMATTING</string>
+                    <formatting/>
+                  </entry>
+                  <entry>
+                    <string>REPLACING</string>
+                    <replacing/>
+                  </entry>
+                  <entry>
+                    <string>FROM_LANDSCAPE</string>
+                    <fromLandscape/>
+                  </entry>
+                </transformers>
+              </tableTransformers>
+              <headers>
+                <string>baseURI</string>
+                <string>BASE_PATH</string>
+                <string>ENDPOINT</string>
+                <string>REQUEST_TYPE</string>
+                <string>BODY</string>
+              </headers>
+              <data>
+                <linked-hash-map>
+                  <entry>
+                    <string>baseURI</string>
+                    <string>http://localhost:9999/com.jaxrs.api</string>
+                  </entry>
+                  <entry>
+                    <string>BASE_PATH</string>
+                    <string>/webapi/hotels</string>
+                  </entry>
+                  <entry>
+                    <string>ENDPOINT</string>
+                    <string>/add</string>
+                  </entry>
+                  <entry>
+                    <string>REQUEST_TYPE</string>
+                    <string>POST</string>
+                  </entry>
+                  <entry>
+                    <string>BODY</string>
+                    <string>{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}</string>
+                  </entry>
+                </linked-hash-map>
+              </data>
+              <properties>
+                <properties>
+                  <property name="headerSeparator" value="|"/>
+                  <property name="valueSeparator" value="|"/>
+                  <property name="ignorableSeparator" value="|--"/>
+                </properties>
+              </properties>
+              <propertiesAsString></propertiesAsString>
+              <namedParameters/>
+            </examplesTable>
+            <steps>
+              <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+              <string>And its base path is &lt;BASE_PATH&gt;</string>
+              <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+              <string>And its body message is &lt;BODY&gt;</string>
+              <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
               <string>Then the REST API should return me a valid response</string>
             </steps>
           </scenario>
         </scenarios>
-        <name>LookupADefinition.story</name>
+        <name>MyHotelService_Validation.story</name>
       </story>
       <localizedNarrative>As a 
 I want to 
 So that </localizedNarrative>
       <allowed>true</allowed>
-      <status>FAILED</status>
+      <status>SUCCESSFUL</status>
       <givenStories/>
       <scenarios>
         <performableScenario>
           <scenario>
-            <title>Rest API basic Look up</title>
+            <title>Verify my local host API Call</title>
             <meta>
               <properties/>
             </meta>
@@ -206,8 +421,8 @@ So that </localizedNarrative>
               </examplesTable>
             </givenStories>
             <examplesTable>
-              <tableAsString>|            baseURI             |  BASE_PATH   |    QUERY_PARAM |
-|  http://services.groupkt.com |  /state |  /get/*/all|</tableAsString>
+              <tableAsString>|            baseURI             |  BASE_PATH   | ENDPOINT|REQUEST_TYPE|
+|  http://localhost:9999/com.jaxrs.api| /webapi/hotels  |/getAll|GET|</tableAsString>
               <tableTransformers>
                 <transformers>
                   <entry>
@@ -227,21 +442,26 @@ So that </localizedNarrative>
               <headers>
                 <string>baseURI</string>
                 <string>BASE_PATH</string>
-                <string>QUERY_PARAM</string>
+                <string>ENDPOINT</string>
+                <string>REQUEST_TYPE</string>
               </headers>
               <data>
                 <linked-hash-map>
                   <entry>
                     <string>baseURI</string>
-                    <string>http://services.groupkt.com</string>
+                    <string>http://localhost:9999/com.jaxrs.api</string>
                   </entry>
                   <entry>
                     <string>BASE_PATH</string>
-                    <string>/state</string>
+                    <string>/webapi/hotels</string>
                   </entry>
                   <entry>
-                    <string>QUERY_PARAM</string>
-                    <string>/get/*/all</string>
+                    <string>ENDPOINT</string>
+                    <string>/getAll</string>
+                  </entry>
+                  <entry>
+                    <string>REQUEST_TYPE</string>
+                    <string>GET</string>
                   </entry>
                 </linked-hash-map>
               </data>
@@ -258,27 +478,31 @@ So that </localizedNarrative>
             <steps>
               <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
               <string>And its base path is &lt;BASE_PATH&gt;</string>
-              <string>And its query parameter is &lt;QUERY_PARAM&gt;</string>
-              <string>When I send the request to RestAPI</string>
+              <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+              <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
               <string>Then the REST API should return me a valid response</string>
             </steps>
           </scenario>
-          <storyPath>com/testing/stories/consult_dictionary/LookupADefinition.story</storyPath>
+          <storyPath>com/testing/stories/consult_dictionary/MyHotelService_Validation.story</storyPath>
           <allowed>true</allowed>
           <examplePerformableScenarios>
             <examplePerformableScenario>
               <parameters class="linked-hash-map">
                 <entry>
                   <string>baseURI</string>
-                  <string>http://services.groupkt.com</string>
+                  <string>http://localhost:9999/com.jaxrs.api</string>
                 </entry>
                 <entry>
                   <string>BASE_PATH</string>
-                  <string>/state</string>
+                  <string>/webapi/hotels</string>
                 </entry>
                 <entry>
-                  <string>QUERY_PARAM</string>
-                  <string>/get/*/all</string>
+                  <string>ENDPOINT</string>
+                  <string>/getAll</string>
+                </entry>
+                <entry>
+                  <string>REQUEST_TYPE</string>
+                  <string>GET</string>
                 </entry>
               </parameters>
               <givenStories/>
@@ -291,69 +515,43 @@ So that </localizedNarrative>
                   <successful>
                     <step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
                     <type>SUCCESSFUL</type>
-                    <parametrisedStep>Given I have a Base URI ｟http://services.groupkt.com｠ for the REST API</parametrisedStep>
-                    <durationInMillis>800</durationInMillis>
-                    <start>1505763880593</start>
-                    <end>1505763881393</end>
+                    <parametrisedStep>Given I have a Base URI ｟http://localhost:9999/com.jaxrs.api｠ for the REST API</parametrisedStep>
+                    <durationInMillis>938</durationInMillis>
+                    <start>1507468644118</start>
+                    <end>1507468645056</end>
                   </successful>
-                  <pending>
+                  <successful>
                     <step>And its base path is &lt;BASE_PATH&gt;</step>
-                    <type>PENDING</type>
-                    <throwable class="org.jbehave.core.failures.PendingStepFound">
-                      <detailMessage>And its base path is &lt;BASE_PATH&gt;</detailMessage>
-                      <stackTrace>
-                        <trace>org.jbehave.core.steps.AbstractStepResult$Pending.&lt;init&gt;(AbstractStepResult.java:58)</trace>
-                        <trace>org.jbehave.core.steps.AbstractStepResult.pending(AbstractStepResult.java:192)</trace>
-                        <trace>org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:740)</trace>
-                        <trace>org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:346)</trace>
-                        <trace>org.jbehave.core.embedder.PerformableTree$PerformableSteps.perform(PerformableTree.java:1090)</trace>
-                        <trace>org.jbehave.core.embedder.PerformableTree$AbstractPerformableScenario.performRestartableSteps(PerformableTree.java:955)</trace>
-                        <trace>org.jbehave.core.embedder.PerformableTree$ExamplePerformableScenario.perform(PerformableTree.java:1029)</trace>
-                        <trace>org.jbehave.core.embedder.PerformableTree$PerformableScenario.perform(PerformableTree.java:899)</trace>
-                        <trace>org.jbehave.core.embedder.PerformableTree$PerformableStory.performScenarios(PerformableTree.java:825)</trace>
-                        <trace>org.jbehave.core.embedder.PerformableTree$PerformableStory.perform(PerformableTree.java:798)</trace>
-                        <trace>org.jbehave.core.embedder.PerformableTree.performCancellable(PerformableTree.java:422)</trace>
-                        <trace>org.jbehave.core.embedder.PerformableTree.perform(PerformableTree.java:393)</trace>
-                        <trace>org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:292)</trace>
-                        <trace>org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:266)</trace>
-                        <trace>java.util.concurrent.FutureTask.run(FutureTask.java:266)</trace>
-                        <trace>java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)</trace>
-                        <trace>java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)</trace>
-                        <trace>java.lang.Thread.run(Thread.java:745)</trace>
-                      </stackTrace>
-                      <suppressedExceptions class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
-                        <c class="list"/>
-                        <list/>
-                      </suppressedExceptions>
-                      <uuid>063cd5bf-8bdc-43a2-b173-6513c5e0d617</uuid>
-                    </throwable>
-                    <durationInMillis>0</durationInMillis>
-                    <start>0</start>
-                    <end>0</end>
-                  </pending>
-                  <notPerformed>
-                    <step>And its query parameter is &lt;QUERY_PARAM&gt;</step>
-                    <type>NOT_PERFORMED</type>
-                    <durationInMillis>0</durationInMillis>
-                    <start>0</start>
-                    <end>0</end>
-                  </notPerformed>
-                  <notPerformed>
-                    <step>When I send the request to RestAPI</step>
-                    <type>NOT_PERFORMED</type>
-                    <parametrisedStep>When I send the request to RestAPI</parametrisedStep>
-                    <durationInMillis>0</durationInMillis>
-                    <start>0</start>
-                    <end>0</end>
-                  </notPerformed>
-                  <notPerformed>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>And its base path is ｟/webapi/hotels｠</parametrisedStep>
+                    <durationInMillis>5</durationInMillis>
+                    <start>1507468645058</start>
+                    <end>1507468645063</end>
+                  </successful>
+                  <successful>
+                    <step>And its endpoint is &lt;ENDPOINT&gt;</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>And its endpoint is ｟/getAll｠</parametrisedStep>
+                    <durationInMillis>70</durationInMillis>
+                    <start>1507468645065</start>
+                    <end>1507468645135</end>
+                  </successful>
+                  <successful>
+                    <step>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>When I send the ｟GET｠ request to RestAPI</parametrisedStep>
+                    <durationInMillis>3105</durationInMillis>
+                    <start>1507468645140</start>
+                    <end>1507468648245</end>
+                  </successful>
+                  <successful>
                     <step>Then the REST API should return me a valid response</step>
-                    <type>NOT_PERFORMED</type>
+                    <type>SUCCESSFUL</type>
                     <parametrisedStep>Then the REST API should return me a valid response</parametrisedStep>
-                    <durationInMillis>0</durationInMillis>
-                    <start>0</start>
-                    <end>0</end>
-                  </notPerformed>
+                    <durationInMillis>4</durationInMillis>
+                    <start>1507468648247</start>
+                    <end>1507468648251</end>
+                  </successful>
                 </results>
               </steps>
               <afterSteps>
@@ -363,7 +561,7 @@ So that </localizedNarrative>
                 <properties/>
               </storyAndScenarioMeta>
               <scenario>
-                <title>Rest API basic Look up</title>
+                <title>Verify my local host API Call</title>
                 <meta>
                   <properties/>
                 </meta>
@@ -402,8 +600,8 @@ So that </localizedNarrative>
                   </examplesTable>
                 </givenStories>
                 <examplesTable>
-                  <tableAsString>|            baseURI             |  BASE_PATH   |    QUERY_PARAM |
-|  http://services.groupkt.com |  /state |  /get/*/all|</tableAsString>
+                  <tableAsString>|            baseURI             |  BASE_PATH   | ENDPOINT|REQUEST_TYPE|
+|  http://localhost:9999/com.jaxrs.api| /webapi/hotels  |/getAll|GET|</tableAsString>
                   <tableTransformers>
                     <transformers>
                       <entry>
@@ -423,21 +621,26 @@ So that </localizedNarrative>
                   <headers>
                     <string>baseURI</string>
                     <string>BASE_PATH</string>
-                    <string>QUERY_PARAM</string>
+                    <string>ENDPOINT</string>
+                    <string>REQUEST_TYPE</string>
                   </headers>
                   <data>
                     <linked-hash-map>
                       <entry>
                         <string>baseURI</string>
-                        <string>http://services.groupkt.com</string>
+                        <string>http://localhost:9999/com.jaxrs.api</string>
                       </entry>
                       <entry>
                         <string>BASE_PATH</string>
-                        <string>/state</string>
+                        <string>/webapi/hotels</string>
                       </entry>
                       <entry>
-                        <string>QUERY_PARAM</string>
-                        <string>/get/*/all</string>
+                        <string>ENDPOINT</string>
+                        <string>/getAll</string>
+                      </entry>
+                      <entry>
+                        <string>REQUEST_TYPE</string>
+                        <string>GET</string>
                       </entry>
                     </linked-hash-map>
                   </data>
@@ -454,226 +657,18 @@ So that </localizedNarrative>
                 <steps>
                   <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
                   <string>And its base path is &lt;BASE_PATH&gt;</string>
-                  <string>And its query parameter is &lt;QUERY_PARAM&gt;</string>
-                  <string>When I send the request to RestAPI</string>
+                  <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+                  <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
                   <string>Then the REST API should return me a valid response</string>
                 </steps>
               </scenario>
             </examplePerformableScenario>
           </examplePerformableScenarios>
-          <status>FAILED</status>
+          <status>SUCCESSFUL</status>
         </performableScenario>
-      </scenarios>
-      <beforeSteps/>
-      <afterSteps/>
-      <timing>
-        <durationInMillis>942</durationInMillis>
-        <start>1505763880493</start>
-        <end>1505763881435</end>
-      </timing>
-      <givenStory>false</givenStory>
-    </performableStory>
-  </stories>
-  <scenarios>
-    <performableScenario>
-      <scenario>
-        <title>Rest API basic Look up</title>
-        <meta>
-          <properties/>
-        </meta>
-        <givenStories>
-          <givenStories/>
-          <givenStoriesAsString></givenStoriesAsString>
-          <examplesTable>
-            <tableAsString></tableAsString>
-            <tableTransformers>
-              <transformers>
-                <entry>
-                  <string>FORMATTING</string>
-                  <formatting/>
-                </entry>
-                <entry>
-                  <string>REPLACING</string>
-                  <replacing/>
-                </entry>
-                <entry>
-                  <string>FROM_LANDSCAPE</string>
-                  <fromLandscape/>
-                </entry>
-              </transformers>
-            </tableTransformers>
-            <headers/>
-            <data/>
-            <properties>
-              <properties>
-                <property name="headerSeparator" value="|"/>
-                <property name="valueSeparator" value="|"/>
-                <property name="ignorableSeparator" value="|--"/>
-              </properties>
-            </properties>
-            <propertiesAsString></propertiesAsString>
-            <namedParameters/>
-          </examplesTable>
-        </givenStories>
-        <examplesTable>
-          <tableAsString>|            baseURI             |  BASE_PATH   |    QUERY_PARAM |
-|  http://services.groupkt.com |  /state |  /get/*/all|</tableAsString>
-          <tableTransformers>
-            <transformers>
-              <entry>
-                <string>FORMATTING</string>
-                <formatting/>
-              </entry>
-              <entry>
-                <string>REPLACING</string>
-                <replacing/>
-              </entry>
-              <entry>
-                <string>FROM_LANDSCAPE</string>
-                <fromLandscape/>
-              </entry>
-            </transformers>
-          </tableTransformers>
-          <headers>
-            <string>baseURI</string>
-            <string>BASE_PATH</string>
-            <string>QUERY_PARAM</string>
-          </headers>
-          <data>
-            <linked-hash-map>
-              <entry>
-                <string>baseURI</string>
-                <string>http://services.groupkt.com</string>
-              </entry>
-              <entry>
-                <string>BASE_PATH</string>
-                <string>/state</string>
-              </entry>
-              <entry>
-                <string>QUERY_PARAM</string>
-                <string>/get/*/all</string>
-              </entry>
-            </linked-hash-map>
-          </data>
-          <properties>
-            <properties>
-              <property name="headerSeparator" value="|"/>
-              <property name="valueSeparator" value="|"/>
-              <property name="ignorableSeparator" value="|--"/>
-            </properties>
-          </properties>
-          <propertiesAsString></propertiesAsString>
-          <namedParameters/>
-        </examplesTable>
-        <steps>
-          <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
-          <string>And its base path is &lt;BASE_PATH&gt;</string>
-          <string>And its query parameter is &lt;QUERY_PARAM&gt;</string>
-          <string>When I send the request to RestAPI</string>
-          <string>Then the REST API should return me a valid response</string>
-        </steps>
-      </scenario>
-      <storyPath>com/testing/stories/consult_dictionary/LookupADefinition.story</storyPath>
-      <allowed>true</allowed>
-      <examplePerformableScenarios>
-        <examplePerformableScenario>
-          <parameters class="linked-hash-map">
-            <entry>
-              <string>baseURI</string>
-              <string>http://services.groupkt.com</string>
-            </entry>
-            <entry>
-              <string>BASE_PATH</string>
-              <string>/state</string>
-            </entry>
-            <entry>
-              <string>QUERY_PARAM</string>
-              <string>/get/*/all</string>
-            </entry>
-          </parameters>
-          <givenStories/>
-          <beforeSteps>
-            <matches/>
-          </beforeSteps>
-          <steps>
-            <matches/>
-            <results>
-              <successful>
-                <step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
-                <type>SUCCESSFUL</type>
-                <parametrisedStep>Given I have a Base URI ｟http://services.groupkt.com｠ for the REST API</parametrisedStep>
-                <durationInMillis>800</durationInMillis>
-                <start>1505763880593</start>
-                <end>1505763881393</end>
-              </successful>
-              <pending>
-                <step>And its base path is &lt;BASE_PATH&gt;</step>
-                <type>PENDING</type>
-                <throwable class="org.jbehave.core.failures.PendingStepFound">
-                  <detailMessage>And its base path is &lt;BASE_PATH&gt;</detailMessage>
-                  <stackTrace>
-                    <trace>org.jbehave.core.steps.AbstractStepResult$Pending.&lt;init&gt;(AbstractStepResult.java:58)</trace>
-                    <trace>org.jbehave.core.steps.AbstractStepResult.pending(AbstractStepResult.java:192)</trace>
-                    <trace>org.jbehave.core.steps.StepCreator$ParametrisedStep.perform(StepCreator.java:740)</trace>
-                    <trace>org.jbehave.core.embedder.PerformableTree$FineSoFar.run(PerformableTree.java:346)</trace>
-                    <trace>org.jbehave.core.embedder.PerformableTree$PerformableSteps.perform(PerformableTree.java:1090)</trace>
-                    <trace>org.jbehave.core.embedder.PerformableTree$AbstractPerformableScenario.performRestartableSteps(PerformableTree.java:955)</trace>
-                    <trace>org.jbehave.core.embedder.PerformableTree$ExamplePerformableScenario.perform(PerformableTree.java:1029)</trace>
-                    <trace>org.jbehave.core.embedder.PerformableTree$PerformableScenario.perform(PerformableTree.java:899)</trace>
-                    <trace>org.jbehave.core.embedder.PerformableTree$PerformableStory.performScenarios(PerformableTree.java:825)</trace>
-                    <trace>org.jbehave.core.embedder.PerformableTree$PerformableStory.perform(PerformableTree.java:798)</trace>
-                    <trace>org.jbehave.core.embedder.PerformableTree.performCancellable(PerformableTree.java:422)</trace>
-                    <trace>org.jbehave.core.embedder.PerformableTree.perform(PerformableTree.java:393)</trace>
-                    <trace>org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:292)</trace>
-                    <trace>org.jbehave.core.embedder.StoryManager$EnqueuedStory.call(StoryManager.java:266)</trace>
-                    <trace>java.util.concurrent.FutureTask.run(FutureTask.java:266)</trace>
-                    <trace>java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)</trace>
-                    <trace>java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)</trace>
-                    <trace>java.lang.Thread.run(Thread.java:745)</trace>
-                  </stackTrace>
-                  <suppressedExceptions class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
-                    <c class="list"/>
-                    <list/>
-                  </suppressedExceptions>
-                  <uuid>063cd5bf-8bdc-43a2-b173-6513c5e0d617</uuid>
-                </throwable>
-                <durationInMillis>0</durationInMillis>
-                <start>0</start>
-                <end>0</end>
-              </pending>
-              <notPerformed>
-                <step>And its query parameter is &lt;QUERY_PARAM&gt;</step>
-                <type>NOT_PERFORMED</type>
-                <durationInMillis>0</durationInMillis>
-                <start>0</start>
-                <end>0</end>
-              </notPerformed>
-              <notPerformed>
-                <step>When I send the request to RestAPI</step>
-                <type>NOT_PERFORMED</type>
-                <parametrisedStep>When I send the request to RestAPI</parametrisedStep>
-                <durationInMillis>0</durationInMillis>
-                <start>0</start>
-                <end>0</end>
-              </notPerformed>
-              <notPerformed>
-                <step>Then the REST API should return me a valid response</step>
-                <type>NOT_PERFORMED</type>
-                <parametrisedStep>Then the REST API should return me a valid response</parametrisedStep>
-                <durationInMillis>0</durationInMillis>
-                <start>0</start>
-                <end>0</end>
-              </notPerformed>
-            </results>
-          </steps>
-          <afterSteps>
-            <matches/>
-          </afterSteps>
-          <storyAndScenarioMeta>
-            <properties/>
-          </storyAndScenarioMeta>
+        <performableScenario>
           <scenario>
-            <title>Rest API basic Look up</title>
+            <title>Verify the REST response for a GET request returns all the mandatory fields</title>
             <meta>
               <properties/>
             </meta>
@@ -712,8 +707,8 @@ So that </localizedNarrative>
               </examplesTable>
             </givenStories>
             <examplesTable>
-              <tableAsString>|            baseURI             |  BASE_PATH   |    QUERY_PARAM |
-|  http://services.groupkt.com |  /state |  /get/*/all|</tableAsString>
+              <tableAsString>|            baseURI             |  BASE_PATH   |    ENDPOINT |REQUEST_TYPE|
+|  http://localhost:9999/com.jaxrs.api|  /webapi/hotels | /getAll|GET|</tableAsString>
               <tableTransformers>
                 <transformers>
                   <entry>
@@ -733,21 +728,26 @@ So that </localizedNarrative>
               <headers>
                 <string>baseURI</string>
                 <string>BASE_PATH</string>
-                <string>QUERY_PARAM</string>
+                <string>ENDPOINT</string>
+                <string>REQUEST_TYPE</string>
               </headers>
               <data>
                 <linked-hash-map>
                   <entry>
                     <string>baseURI</string>
-                    <string>http://services.groupkt.com</string>
+                    <string>http://localhost:9999/com.jaxrs.api</string>
                   </entry>
                   <entry>
                     <string>BASE_PATH</string>
-                    <string>/state</string>
+                    <string>/webapi/hotels</string>
                   </entry>
                   <entry>
-                    <string>QUERY_PARAM</string>
-                    <string>/get/*/all</string>
+                    <string>ENDPOINT</string>
+                    <string>/getAll</string>
+                  </entry>
+                  <entry>
+                    <string>REQUEST_TYPE</string>
+                    <string>GET</string>
                   </entry>
                 </linked-hash-map>
               </data>
@@ -764,14 +764,1397 @@ So that </localizedNarrative>
             <steps>
               <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
               <string>And its base path is &lt;BASE_PATH&gt;</string>
-              <string>And its query parameter is &lt;QUERY_PARAM&gt;</string>
-              <string>When I send the request to RestAPI</string>
+              <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+              <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+              <string>Then all the mandatory fields should be returned in the response</string>
+            </steps>
+          </scenario>
+          <storyPath>com/testing/stories/consult_dictionary/MyHotelService_Validation.story</storyPath>
+          <allowed>true</allowed>
+          <examplePerformableScenarios>
+            <examplePerformableScenario>
+              <parameters class="linked-hash-map">
+                <entry>
+                  <string>baseURI</string>
+                  <string>http://localhost:9999/com.jaxrs.api</string>
+                </entry>
+                <entry>
+                  <string>BASE_PATH</string>
+                  <string>/webapi/hotels</string>
+                </entry>
+                <entry>
+                  <string>ENDPOINT</string>
+                  <string>/getAll</string>
+                </entry>
+                <entry>
+                  <string>REQUEST_TYPE</string>
+                  <string>GET</string>
+                </entry>
+              </parameters>
+              <givenStories/>
+              <beforeSteps>
+                <matches/>
+              </beforeSteps>
+              <steps>
+                <matches/>
+                <results>
+                  <successful>
+                    <step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>Given I have a Base URI ｟http://localhost:9999/com.jaxrs.api｠ for the REST API</parametrisedStep>
+                    <durationInMillis>3</durationInMillis>
+                    <start>1507468648313</start>
+                    <end>1507468648316</end>
+                  </successful>
+                  <successful>
+                    <step>And its base path is &lt;BASE_PATH&gt;</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>And its base path is ｟/webapi/hotels｠</parametrisedStep>
+                    <durationInMillis>2</durationInMillis>
+                    <start>1507468648317</start>
+                    <end>1507468648319</end>
+                  </successful>
+                  <successful>
+                    <step>And its endpoint is &lt;ENDPOINT&gt;</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>And its endpoint is ｟/getAll｠</parametrisedStep>
+                    <durationInMillis>6</durationInMillis>
+                    <start>1507468648329</start>
+                    <end>1507468648335</end>
+                  </successful>
+                  <successful>
+                    <step>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>When I send the ｟GET｠ request to RestAPI</parametrisedStep>
+                    <durationInMillis>515</durationInMillis>
+                    <start>1507468648337</start>
+                    <end>1507468648852</end>
+                  </successful>
+                  <successful>
+                    <step>Then all the mandatory fields should be returned in the response</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>Then all the mandatory fields should be returned in the response</parametrisedStep>
+                    <durationInMillis>80</durationInMillis>
+                    <start>1507468648853</start>
+                    <end>1507468648933</end>
+                  </successful>
+                </results>
+              </steps>
+              <afterSteps>
+                <matches/>
+              </afterSteps>
+              <storyAndScenarioMeta>
+                <properties/>
+              </storyAndScenarioMeta>
+              <scenario>
+                <title>Verify the REST response for a GET request returns all the mandatory fields</title>
+                <meta>
+                  <properties/>
+                </meta>
+                <givenStories>
+                  <givenStories/>
+                  <givenStoriesAsString></givenStoriesAsString>
+                  <examplesTable>
+                    <tableAsString></tableAsString>
+                    <tableTransformers>
+                      <transformers>
+                        <entry>
+                          <string>FORMATTING</string>
+                          <formatting/>
+                        </entry>
+                        <entry>
+                          <string>REPLACING</string>
+                          <replacing/>
+                        </entry>
+                        <entry>
+                          <string>FROM_LANDSCAPE</string>
+                          <fromLandscape/>
+                        </entry>
+                      </transformers>
+                    </tableTransformers>
+                    <headers/>
+                    <data/>
+                    <properties>
+                      <properties>
+                        <property name="headerSeparator" value="|"/>
+                        <property name="valueSeparator" value="|"/>
+                        <property name="ignorableSeparator" value="|--"/>
+                      </properties>
+                    </properties>
+                    <propertiesAsString></propertiesAsString>
+                    <namedParameters/>
+                  </examplesTable>
+                </givenStories>
+                <examplesTable>
+                  <tableAsString>|            baseURI             |  BASE_PATH   |    ENDPOINT |REQUEST_TYPE|
+|  http://localhost:9999/com.jaxrs.api|  /webapi/hotels | /getAll|GET|</tableAsString>
+                  <tableTransformers>
+                    <transformers>
+                      <entry>
+                        <string>FORMATTING</string>
+                        <formatting/>
+                      </entry>
+                      <entry>
+                        <string>REPLACING</string>
+                        <replacing/>
+                      </entry>
+                      <entry>
+                        <string>FROM_LANDSCAPE</string>
+                        <fromLandscape/>
+                      </entry>
+                    </transformers>
+                  </tableTransformers>
+                  <headers>
+                    <string>baseURI</string>
+                    <string>BASE_PATH</string>
+                    <string>ENDPOINT</string>
+                    <string>REQUEST_TYPE</string>
+                  </headers>
+                  <data>
+                    <linked-hash-map>
+                      <entry>
+                        <string>baseURI</string>
+                        <string>http://localhost:9999/com.jaxrs.api</string>
+                      </entry>
+                      <entry>
+                        <string>BASE_PATH</string>
+                        <string>/webapi/hotels</string>
+                      </entry>
+                      <entry>
+                        <string>ENDPOINT</string>
+                        <string>/getAll</string>
+                      </entry>
+                      <entry>
+                        <string>REQUEST_TYPE</string>
+                        <string>GET</string>
+                      </entry>
+                    </linked-hash-map>
+                  </data>
+                  <properties>
+                    <properties>
+                      <property name="headerSeparator" value="|"/>
+                      <property name="valueSeparator" value="|"/>
+                      <property name="ignorableSeparator" value="|--"/>
+                    </properties>
+                  </properties>
+                  <propertiesAsString></propertiesAsString>
+                  <namedParameters/>
+                </examplesTable>
+                <steps>
+                  <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+                  <string>And its base path is &lt;BASE_PATH&gt;</string>
+                  <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+                  <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+                  <string>Then all the mandatory fields should be returned in the response</string>
+                </steps>
+              </scenario>
+            </examplePerformableScenario>
+          </examplePerformableScenarios>
+          <status>SUCCESSFUL</status>
+        </performableScenario>
+        <performableScenario>
+          <scenario>
+            <title>Verify the REST response after the POST request</title>
+            <meta>
+              <properties/>
+            </meta>
+            <givenStories>
+              <givenStories/>
+              <givenStoriesAsString></givenStoriesAsString>
+              <examplesTable>
+                <tableAsString></tableAsString>
+                <tableTransformers>
+                  <transformers>
+                    <entry>
+                      <string>FORMATTING</string>
+                      <formatting/>
+                    </entry>
+                    <entry>
+                      <string>REPLACING</string>
+                      <replacing/>
+                    </entry>
+                    <entry>
+                      <string>FROM_LANDSCAPE</string>
+                      <fromLandscape/>
+                    </entry>
+                  </transformers>
+                </tableTransformers>
+                <headers/>
+                <data/>
+                <properties>
+                  <properties>
+                    <property name="headerSeparator" value="|"/>
+                    <property name="valueSeparator" value="|"/>
+                    <property name="ignorableSeparator" value="|--"/>
+                  </properties>
+                </properties>
+                <propertiesAsString></propertiesAsString>
+                <namedParameters/>
+              </examplesTable>
+            </givenStories>
+            <examplesTable>
+              <tableAsString>|            baseURI             |  BASE_PATH   |    ENDPOINT | REQUEST_TYPE|BODY|
+|  http://localhost:9999/com.jaxrs.api|  /webapi/hotels | /add|POST| {&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}|</tableAsString>
+              <tableTransformers>
+                <transformers>
+                  <entry>
+                    <string>FORMATTING</string>
+                    <formatting/>
+                  </entry>
+                  <entry>
+                    <string>REPLACING</string>
+                    <replacing/>
+                  </entry>
+                  <entry>
+                    <string>FROM_LANDSCAPE</string>
+                    <fromLandscape/>
+                  </entry>
+                </transformers>
+              </tableTransformers>
+              <headers>
+                <string>baseURI</string>
+                <string>BASE_PATH</string>
+                <string>ENDPOINT</string>
+                <string>REQUEST_TYPE</string>
+                <string>BODY</string>
+              </headers>
+              <data>
+                <linked-hash-map>
+                  <entry>
+                    <string>baseURI</string>
+                    <string>http://localhost:9999/com.jaxrs.api</string>
+                  </entry>
+                  <entry>
+                    <string>BASE_PATH</string>
+                    <string>/webapi/hotels</string>
+                  </entry>
+                  <entry>
+                    <string>ENDPOINT</string>
+                    <string>/add</string>
+                  </entry>
+                  <entry>
+                    <string>REQUEST_TYPE</string>
+                    <string>POST</string>
+                  </entry>
+                  <entry>
+                    <string>BODY</string>
+                    <string>{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}</string>
+                  </entry>
+                </linked-hash-map>
+              </data>
+              <properties>
+                <properties>
+                  <property name="headerSeparator" value="|"/>
+                  <property name="valueSeparator" value="|"/>
+                  <property name="ignorableSeparator" value="|--"/>
+                </properties>
+              </properties>
+              <propertiesAsString></propertiesAsString>
+              <namedParameters/>
+            </examplesTable>
+            <steps>
+              <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+              <string>And its base path is &lt;BASE_PATH&gt;</string>
+              <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+              <string>And its body message is &lt;BODY&gt;</string>
+              <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+              <string>Then the REST API should return me a valid response</string>
+            </steps>
+          </scenario>
+          <storyPath>com/testing/stories/consult_dictionary/MyHotelService_Validation.story</storyPath>
+          <allowed>true</allowed>
+          <examplePerformableScenarios>
+            <examplePerformableScenario>
+              <parameters class="linked-hash-map">
+                <entry>
+                  <string>baseURI</string>
+                  <string>http://localhost:9999/com.jaxrs.api</string>
+                </entry>
+                <entry>
+                  <string>BASE_PATH</string>
+                  <string>/webapi/hotels</string>
+                </entry>
+                <entry>
+                  <string>ENDPOINT</string>
+                  <string>/add</string>
+                </entry>
+                <entry>
+                  <string>REQUEST_TYPE</string>
+                  <string>POST</string>
+                </entry>
+                <entry>
+                  <string>BODY</string>
+                  <string>{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}</string>
+                </entry>
+              </parameters>
+              <givenStories/>
+              <beforeSteps>
+                <matches/>
+              </beforeSteps>
+              <steps>
+                <matches/>
+                <results>
+                  <successful>
+                    <step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>Given I have a Base URI ｟http://localhost:9999/com.jaxrs.api｠ for the REST API</parametrisedStep>
+                    <durationInMillis>4</durationInMillis>
+                    <start>1507468648951</start>
+                    <end>1507468648955</end>
+                  </successful>
+                  <successful>
+                    <step>And its base path is &lt;BASE_PATH&gt;</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>And its base path is ｟/webapi/hotels｠</parametrisedStep>
+                    <durationInMillis>3</durationInMillis>
+                    <start>1507468648957</start>
+                    <end>1507468648960</end>
+                  </successful>
+                  <successful>
+                    <step>And its endpoint is &lt;ENDPOINT&gt;</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>And its endpoint is ｟/add｠</parametrisedStep>
+                    <durationInMillis>3</durationInMillis>
+                    <start>1507468648961</start>
+                    <end>1507468648964</end>
+                  </successful>
+                  <successful>
+                    <step>And its body message is &lt;BODY&gt;</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>And its body message is ｟{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}｠</parametrisedStep>
+                    <durationInMillis>1</durationInMillis>
+                    <start>1507468648965</start>
+                    <end>1507468648966</end>
+                  </successful>
+                  <successful>
+                    <step>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>When I send the ｟POST｠ request to RestAPI</parametrisedStep>
+                    <durationInMillis>1105</durationInMillis>
+                    <start>1507468648968</start>
+                    <end>1507468650073</end>
+                  </successful>
+                  <successful>
+                    <step>Then the REST API should return me a valid response</step>
+                    <type>SUCCESSFUL</type>
+                    <parametrisedStep>Then the REST API should return me a valid response</parametrisedStep>
+                    <durationInMillis>2</durationInMillis>
+                    <start>1507468650074</start>
+                    <end>1507468650076</end>
+                  </successful>
+                </results>
+              </steps>
+              <afterSteps>
+                <matches/>
+              </afterSteps>
+              <storyAndScenarioMeta>
+                <properties/>
+              </storyAndScenarioMeta>
+              <scenario>
+                <title>Verify the REST response after the POST request</title>
+                <meta>
+                  <properties/>
+                </meta>
+                <givenStories>
+                  <givenStories/>
+                  <givenStoriesAsString></givenStoriesAsString>
+                  <examplesTable>
+                    <tableAsString></tableAsString>
+                    <tableTransformers>
+                      <transformers>
+                        <entry>
+                          <string>FORMATTING</string>
+                          <formatting/>
+                        </entry>
+                        <entry>
+                          <string>REPLACING</string>
+                          <replacing/>
+                        </entry>
+                        <entry>
+                          <string>FROM_LANDSCAPE</string>
+                          <fromLandscape/>
+                        </entry>
+                      </transformers>
+                    </tableTransformers>
+                    <headers/>
+                    <data/>
+                    <properties>
+                      <properties>
+                        <property name="headerSeparator" value="|"/>
+                        <property name="valueSeparator" value="|"/>
+                        <property name="ignorableSeparator" value="|--"/>
+                      </properties>
+                    </properties>
+                    <propertiesAsString></propertiesAsString>
+                    <namedParameters/>
+                  </examplesTable>
+                </givenStories>
+                <examplesTable>
+                  <tableAsString>|            baseURI             |  BASE_PATH   |    ENDPOINT | REQUEST_TYPE|BODY|
+|  http://localhost:9999/com.jaxrs.api|  /webapi/hotels | /add|POST| {&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}|</tableAsString>
+                  <tableTransformers>
+                    <transformers>
+                      <entry>
+                        <string>FORMATTING</string>
+                        <formatting/>
+                      </entry>
+                      <entry>
+                        <string>REPLACING</string>
+                        <replacing/>
+                      </entry>
+                      <entry>
+                        <string>FROM_LANDSCAPE</string>
+                        <fromLandscape/>
+                      </entry>
+                    </transformers>
+                  </tableTransformers>
+                  <headers>
+                    <string>baseURI</string>
+                    <string>BASE_PATH</string>
+                    <string>ENDPOINT</string>
+                    <string>REQUEST_TYPE</string>
+                    <string>BODY</string>
+                  </headers>
+                  <data>
+                    <linked-hash-map>
+                      <entry>
+                        <string>baseURI</string>
+                        <string>http://localhost:9999/com.jaxrs.api</string>
+                      </entry>
+                      <entry>
+                        <string>BASE_PATH</string>
+                        <string>/webapi/hotels</string>
+                      </entry>
+                      <entry>
+                        <string>ENDPOINT</string>
+                        <string>/add</string>
+                      </entry>
+                      <entry>
+                        <string>REQUEST_TYPE</string>
+                        <string>POST</string>
+                      </entry>
+                      <entry>
+                        <string>BODY</string>
+                        <string>{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}</string>
+                      </entry>
+                    </linked-hash-map>
+                  </data>
+                  <properties>
+                    <properties>
+                      <property name="headerSeparator" value="|"/>
+                      <property name="valueSeparator" value="|"/>
+                      <property name="ignorableSeparator" value="|--"/>
+                    </properties>
+                  </properties>
+                  <propertiesAsString></propertiesAsString>
+                  <namedParameters/>
+                </examplesTable>
+                <steps>
+                  <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+                  <string>And its base path is &lt;BASE_PATH&gt;</string>
+                  <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+                  <string>And its body message is &lt;BODY&gt;</string>
+                  <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+                  <string>Then the REST API should return me a valid response</string>
+                </steps>
+              </scenario>
+            </examplePerformableScenario>
+          </examplePerformableScenarios>
+          <status>SUCCESSFUL</status>
+        </performableScenario>
+      </scenarios>
+      <beforeSteps/>
+      <afterSteps/>
+      <timing>
+        <durationInMillis>6089</durationInMillis>
+        <start>1507468643991</start>
+        <end>1507468650080</end>
+      </timing>
+      <givenStory>false</givenStory>
+    </performableStory>
+  </stories>
+  <scenarios>
+    <performableScenario>
+      <scenario>
+        <title>Verify my local host API Call</title>
+        <meta>
+          <properties/>
+        </meta>
+        <givenStories>
+          <givenStories/>
+          <givenStoriesAsString></givenStoriesAsString>
+          <examplesTable>
+            <tableAsString></tableAsString>
+            <tableTransformers>
+              <transformers>
+                <entry>
+                  <string>FORMATTING</string>
+                  <formatting/>
+                </entry>
+                <entry>
+                  <string>REPLACING</string>
+                  <replacing/>
+                </entry>
+                <entry>
+                  <string>FROM_LANDSCAPE</string>
+                  <fromLandscape/>
+                </entry>
+              </transformers>
+            </tableTransformers>
+            <headers/>
+            <data/>
+            <properties>
+              <properties>
+                <property name="headerSeparator" value="|"/>
+                <property name="valueSeparator" value="|"/>
+                <property name="ignorableSeparator" value="|--"/>
+              </properties>
+            </properties>
+            <propertiesAsString></propertiesAsString>
+            <namedParameters/>
+          </examplesTable>
+        </givenStories>
+        <examplesTable>
+          <tableAsString>|            baseURI             |  BASE_PATH   | ENDPOINT|REQUEST_TYPE|
+|  http://localhost:9999/com.jaxrs.api| /webapi/hotels  |/getAll|GET|</tableAsString>
+          <tableTransformers>
+            <transformers>
+              <entry>
+                <string>FORMATTING</string>
+                <formatting/>
+              </entry>
+              <entry>
+                <string>REPLACING</string>
+                <replacing/>
+              </entry>
+              <entry>
+                <string>FROM_LANDSCAPE</string>
+                <fromLandscape/>
+              </entry>
+            </transformers>
+          </tableTransformers>
+          <headers>
+            <string>baseURI</string>
+            <string>BASE_PATH</string>
+            <string>ENDPOINT</string>
+            <string>REQUEST_TYPE</string>
+          </headers>
+          <data>
+            <linked-hash-map>
+              <entry>
+                <string>baseURI</string>
+                <string>http://localhost:9999/com.jaxrs.api</string>
+              </entry>
+              <entry>
+                <string>BASE_PATH</string>
+                <string>/webapi/hotels</string>
+              </entry>
+              <entry>
+                <string>ENDPOINT</string>
+                <string>/getAll</string>
+              </entry>
+              <entry>
+                <string>REQUEST_TYPE</string>
+                <string>GET</string>
+              </entry>
+            </linked-hash-map>
+          </data>
+          <properties>
+            <properties>
+              <property name="headerSeparator" value="|"/>
+              <property name="valueSeparator" value="|"/>
+              <property name="ignorableSeparator" value="|--"/>
+            </properties>
+          </properties>
+          <propertiesAsString></propertiesAsString>
+          <namedParameters/>
+        </examplesTable>
+        <steps>
+          <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+          <string>And its base path is &lt;BASE_PATH&gt;</string>
+          <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+          <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+          <string>Then the REST API should return me a valid response</string>
+        </steps>
+      </scenario>
+      <storyPath>com/testing/stories/consult_dictionary/MyHotelService_Validation.story</storyPath>
+      <allowed>true</allowed>
+      <examplePerformableScenarios>
+        <examplePerformableScenario>
+          <parameters class="linked-hash-map">
+            <entry>
+              <string>baseURI</string>
+              <string>http://localhost:9999/com.jaxrs.api</string>
+            </entry>
+            <entry>
+              <string>BASE_PATH</string>
+              <string>/webapi/hotels</string>
+            </entry>
+            <entry>
+              <string>ENDPOINT</string>
+              <string>/getAll</string>
+            </entry>
+            <entry>
+              <string>REQUEST_TYPE</string>
+              <string>GET</string>
+            </entry>
+          </parameters>
+          <givenStories/>
+          <beforeSteps>
+            <matches/>
+          </beforeSteps>
+          <steps>
+            <matches/>
+            <results>
+              <successful>
+                <step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>Given I have a Base URI ｟http://localhost:9999/com.jaxrs.api｠ for the REST API</parametrisedStep>
+                <durationInMillis>938</durationInMillis>
+                <start>1507468644118</start>
+                <end>1507468645056</end>
+              </successful>
+              <successful>
+                <step>And its base path is &lt;BASE_PATH&gt;</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>And its base path is ｟/webapi/hotels｠</parametrisedStep>
+                <durationInMillis>5</durationInMillis>
+                <start>1507468645058</start>
+                <end>1507468645063</end>
+              </successful>
+              <successful>
+                <step>And its endpoint is &lt;ENDPOINT&gt;</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>And its endpoint is ｟/getAll｠</parametrisedStep>
+                <durationInMillis>70</durationInMillis>
+                <start>1507468645065</start>
+                <end>1507468645135</end>
+              </successful>
+              <successful>
+                <step>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>When I send the ｟GET｠ request to RestAPI</parametrisedStep>
+                <durationInMillis>3105</durationInMillis>
+                <start>1507468645140</start>
+                <end>1507468648245</end>
+              </successful>
+              <successful>
+                <step>Then the REST API should return me a valid response</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>Then the REST API should return me a valid response</parametrisedStep>
+                <durationInMillis>4</durationInMillis>
+                <start>1507468648247</start>
+                <end>1507468648251</end>
+              </successful>
+            </results>
+          </steps>
+          <afterSteps>
+            <matches/>
+          </afterSteps>
+          <storyAndScenarioMeta>
+            <properties/>
+          </storyAndScenarioMeta>
+          <scenario>
+            <title>Verify my local host API Call</title>
+            <meta>
+              <properties/>
+            </meta>
+            <givenStories>
+              <givenStories/>
+              <givenStoriesAsString></givenStoriesAsString>
+              <examplesTable>
+                <tableAsString></tableAsString>
+                <tableTransformers>
+                  <transformers>
+                    <entry>
+                      <string>FORMATTING</string>
+                      <formatting/>
+                    </entry>
+                    <entry>
+                      <string>REPLACING</string>
+                      <replacing/>
+                    </entry>
+                    <entry>
+                      <string>FROM_LANDSCAPE</string>
+                      <fromLandscape/>
+                    </entry>
+                  </transformers>
+                </tableTransformers>
+                <headers/>
+                <data/>
+                <properties>
+                  <properties>
+                    <property name="headerSeparator" value="|"/>
+                    <property name="valueSeparator" value="|"/>
+                    <property name="ignorableSeparator" value="|--"/>
+                  </properties>
+                </properties>
+                <propertiesAsString></propertiesAsString>
+                <namedParameters/>
+              </examplesTable>
+            </givenStories>
+            <examplesTable>
+              <tableAsString>|            baseURI             |  BASE_PATH   | ENDPOINT|REQUEST_TYPE|
+|  http://localhost:9999/com.jaxrs.api| /webapi/hotels  |/getAll|GET|</tableAsString>
+              <tableTransformers>
+                <transformers>
+                  <entry>
+                    <string>FORMATTING</string>
+                    <formatting/>
+                  </entry>
+                  <entry>
+                    <string>REPLACING</string>
+                    <replacing/>
+                  </entry>
+                  <entry>
+                    <string>FROM_LANDSCAPE</string>
+                    <fromLandscape/>
+                  </entry>
+                </transformers>
+              </tableTransformers>
+              <headers>
+                <string>baseURI</string>
+                <string>BASE_PATH</string>
+                <string>ENDPOINT</string>
+                <string>REQUEST_TYPE</string>
+              </headers>
+              <data>
+                <linked-hash-map>
+                  <entry>
+                    <string>baseURI</string>
+                    <string>http://localhost:9999/com.jaxrs.api</string>
+                  </entry>
+                  <entry>
+                    <string>BASE_PATH</string>
+                    <string>/webapi/hotels</string>
+                  </entry>
+                  <entry>
+                    <string>ENDPOINT</string>
+                    <string>/getAll</string>
+                  </entry>
+                  <entry>
+                    <string>REQUEST_TYPE</string>
+                    <string>GET</string>
+                  </entry>
+                </linked-hash-map>
+              </data>
+              <properties>
+                <properties>
+                  <property name="headerSeparator" value="|"/>
+                  <property name="valueSeparator" value="|"/>
+                  <property name="ignorableSeparator" value="|--"/>
+                </properties>
+              </properties>
+              <propertiesAsString></propertiesAsString>
+              <namedParameters/>
+            </examplesTable>
+            <steps>
+              <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+              <string>And its base path is &lt;BASE_PATH&gt;</string>
+              <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+              <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
               <string>Then the REST API should return me a valid response</string>
             </steps>
           </scenario>
         </examplePerformableScenario>
       </examplePerformableScenarios>
-      <status>FAILED</status>
+      <status>SUCCESSFUL</status>
+    </performableScenario>
+    <performableScenario>
+      <scenario>
+        <title>Verify the REST response for a GET request returns all the mandatory fields</title>
+        <meta>
+          <properties/>
+        </meta>
+        <givenStories>
+          <givenStories/>
+          <givenStoriesAsString></givenStoriesAsString>
+          <examplesTable>
+            <tableAsString></tableAsString>
+            <tableTransformers>
+              <transformers>
+                <entry>
+                  <string>FORMATTING</string>
+                  <formatting/>
+                </entry>
+                <entry>
+                  <string>REPLACING</string>
+                  <replacing/>
+                </entry>
+                <entry>
+                  <string>FROM_LANDSCAPE</string>
+                  <fromLandscape/>
+                </entry>
+              </transformers>
+            </tableTransformers>
+            <headers/>
+            <data/>
+            <properties>
+              <properties>
+                <property name="headerSeparator" value="|"/>
+                <property name="valueSeparator" value="|"/>
+                <property name="ignorableSeparator" value="|--"/>
+              </properties>
+            </properties>
+            <propertiesAsString></propertiesAsString>
+            <namedParameters/>
+          </examplesTable>
+        </givenStories>
+        <examplesTable>
+          <tableAsString>|            baseURI             |  BASE_PATH   |    ENDPOINT |REQUEST_TYPE|
+|  http://localhost:9999/com.jaxrs.api|  /webapi/hotels | /getAll|GET|</tableAsString>
+          <tableTransformers>
+            <transformers>
+              <entry>
+                <string>FORMATTING</string>
+                <formatting/>
+              </entry>
+              <entry>
+                <string>REPLACING</string>
+                <replacing/>
+              </entry>
+              <entry>
+                <string>FROM_LANDSCAPE</string>
+                <fromLandscape/>
+              </entry>
+            </transformers>
+          </tableTransformers>
+          <headers>
+            <string>baseURI</string>
+            <string>BASE_PATH</string>
+            <string>ENDPOINT</string>
+            <string>REQUEST_TYPE</string>
+          </headers>
+          <data>
+            <linked-hash-map>
+              <entry>
+                <string>baseURI</string>
+                <string>http://localhost:9999/com.jaxrs.api</string>
+              </entry>
+              <entry>
+                <string>BASE_PATH</string>
+                <string>/webapi/hotels</string>
+              </entry>
+              <entry>
+                <string>ENDPOINT</string>
+                <string>/getAll</string>
+              </entry>
+              <entry>
+                <string>REQUEST_TYPE</string>
+                <string>GET</string>
+              </entry>
+            </linked-hash-map>
+          </data>
+          <properties>
+            <properties>
+              <property name="headerSeparator" value="|"/>
+              <property name="valueSeparator" value="|"/>
+              <property name="ignorableSeparator" value="|--"/>
+            </properties>
+          </properties>
+          <propertiesAsString></propertiesAsString>
+          <namedParameters/>
+        </examplesTable>
+        <steps>
+          <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+          <string>And its base path is &lt;BASE_PATH&gt;</string>
+          <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+          <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+          <string>Then all the mandatory fields should be returned in the response</string>
+        </steps>
+      </scenario>
+      <storyPath>com/testing/stories/consult_dictionary/MyHotelService_Validation.story</storyPath>
+      <allowed>true</allowed>
+      <examplePerformableScenarios>
+        <examplePerformableScenario>
+          <parameters class="linked-hash-map">
+            <entry>
+              <string>baseURI</string>
+              <string>http://localhost:9999/com.jaxrs.api</string>
+            </entry>
+            <entry>
+              <string>BASE_PATH</string>
+              <string>/webapi/hotels</string>
+            </entry>
+            <entry>
+              <string>ENDPOINT</string>
+              <string>/getAll</string>
+            </entry>
+            <entry>
+              <string>REQUEST_TYPE</string>
+              <string>GET</string>
+            </entry>
+          </parameters>
+          <givenStories/>
+          <beforeSteps>
+            <matches/>
+          </beforeSteps>
+          <steps>
+            <matches/>
+            <results>
+              <successful>
+                <step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>Given I have a Base URI ｟http://localhost:9999/com.jaxrs.api｠ for the REST API</parametrisedStep>
+                <durationInMillis>3</durationInMillis>
+                <start>1507468648313</start>
+                <end>1507468648316</end>
+              </successful>
+              <successful>
+                <step>And its base path is &lt;BASE_PATH&gt;</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>And its base path is ｟/webapi/hotels｠</parametrisedStep>
+                <durationInMillis>2</durationInMillis>
+                <start>1507468648317</start>
+                <end>1507468648319</end>
+              </successful>
+              <successful>
+                <step>And its endpoint is &lt;ENDPOINT&gt;</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>And its endpoint is ｟/getAll｠</parametrisedStep>
+                <durationInMillis>6</durationInMillis>
+                <start>1507468648329</start>
+                <end>1507468648335</end>
+              </successful>
+              <successful>
+                <step>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>When I send the ｟GET｠ request to RestAPI</parametrisedStep>
+                <durationInMillis>515</durationInMillis>
+                <start>1507468648337</start>
+                <end>1507468648852</end>
+              </successful>
+              <successful>
+                <step>Then all the mandatory fields should be returned in the response</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>Then all the mandatory fields should be returned in the response</parametrisedStep>
+                <durationInMillis>80</durationInMillis>
+                <start>1507468648853</start>
+                <end>1507468648933</end>
+              </successful>
+            </results>
+          </steps>
+          <afterSteps>
+            <matches/>
+          </afterSteps>
+          <storyAndScenarioMeta>
+            <properties/>
+          </storyAndScenarioMeta>
+          <scenario>
+            <title>Verify the REST response for a GET request returns all the mandatory fields</title>
+            <meta>
+              <properties/>
+            </meta>
+            <givenStories>
+              <givenStories/>
+              <givenStoriesAsString></givenStoriesAsString>
+              <examplesTable>
+                <tableAsString></tableAsString>
+                <tableTransformers>
+                  <transformers>
+                    <entry>
+                      <string>FORMATTING</string>
+                      <formatting/>
+                    </entry>
+                    <entry>
+                      <string>REPLACING</string>
+                      <replacing/>
+                    </entry>
+                    <entry>
+                      <string>FROM_LANDSCAPE</string>
+                      <fromLandscape/>
+                    </entry>
+                  </transformers>
+                </tableTransformers>
+                <headers/>
+                <data/>
+                <properties>
+                  <properties>
+                    <property name="headerSeparator" value="|"/>
+                    <property name="valueSeparator" value="|"/>
+                    <property name="ignorableSeparator" value="|--"/>
+                  </properties>
+                </properties>
+                <propertiesAsString></propertiesAsString>
+                <namedParameters/>
+              </examplesTable>
+            </givenStories>
+            <examplesTable>
+              <tableAsString>|            baseURI             |  BASE_PATH   |    ENDPOINT |REQUEST_TYPE|
+|  http://localhost:9999/com.jaxrs.api|  /webapi/hotels | /getAll|GET|</tableAsString>
+              <tableTransformers>
+                <transformers>
+                  <entry>
+                    <string>FORMATTING</string>
+                    <formatting/>
+                  </entry>
+                  <entry>
+                    <string>REPLACING</string>
+                    <replacing/>
+                  </entry>
+                  <entry>
+                    <string>FROM_LANDSCAPE</string>
+                    <fromLandscape/>
+                  </entry>
+                </transformers>
+              </tableTransformers>
+              <headers>
+                <string>baseURI</string>
+                <string>BASE_PATH</string>
+                <string>ENDPOINT</string>
+                <string>REQUEST_TYPE</string>
+              </headers>
+              <data>
+                <linked-hash-map>
+                  <entry>
+                    <string>baseURI</string>
+                    <string>http://localhost:9999/com.jaxrs.api</string>
+                  </entry>
+                  <entry>
+                    <string>BASE_PATH</string>
+                    <string>/webapi/hotels</string>
+                  </entry>
+                  <entry>
+                    <string>ENDPOINT</string>
+                    <string>/getAll</string>
+                  </entry>
+                  <entry>
+                    <string>REQUEST_TYPE</string>
+                    <string>GET</string>
+                  </entry>
+                </linked-hash-map>
+              </data>
+              <properties>
+                <properties>
+                  <property name="headerSeparator" value="|"/>
+                  <property name="valueSeparator" value="|"/>
+                  <property name="ignorableSeparator" value="|--"/>
+                </properties>
+              </properties>
+              <propertiesAsString></propertiesAsString>
+              <namedParameters/>
+            </examplesTable>
+            <steps>
+              <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+              <string>And its base path is &lt;BASE_PATH&gt;</string>
+              <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+              <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+              <string>Then all the mandatory fields should be returned in the response</string>
+            </steps>
+          </scenario>
+        </examplePerformableScenario>
+      </examplePerformableScenarios>
+      <status>SUCCESSFUL</status>
+    </performableScenario>
+    <performableScenario>
+      <scenario>
+        <title>Verify the REST response after the POST request</title>
+        <meta>
+          <properties/>
+        </meta>
+        <givenStories>
+          <givenStories/>
+          <givenStoriesAsString></givenStoriesAsString>
+          <examplesTable>
+            <tableAsString></tableAsString>
+            <tableTransformers>
+              <transformers>
+                <entry>
+                  <string>FORMATTING</string>
+                  <formatting/>
+                </entry>
+                <entry>
+                  <string>REPLACING</string>
+                  <replacing/>
+                </entry>
+                <entry>
+                  <string>FROM_LANDSCAPE</string>
+                  <fromLandscape/>
+                </entry>
+              </transformers>
+            </tableTransformers>
+            <headers/>
+            <data/>
+            <properties>
+              <properties>
+                <property name="headerSeparator" value="|"/>
+                <property name="valueSeparator" value="|"/>
+                <property name="ignorableSeparator" value="|--"/>
+              </properties>
+            </properties>
+            <propertiesAsString></propertiesAsString>
+            <namedParameters/>
+          </examplesTable>
+        </givenStories>
+        <examplesTable>
+          <tableAsString>|            baseURI             |  BASE_PATH   |    ENDPOINT | REQUEST_TYPE|BODY|
+|  http://localhost:9999/com.jaxrs.api|  /webapi/hotels | /add|POST| {&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}|</tableAsString>
+          <tableTransformers>
+            <transformers>
+              <entry>
+                <string>FORMATTING</string>
+                <formatting/>
+              </entry>
+              <entry>
+                <string>REPLACING</string>
+                <replacing/>
+              </entry>
+              <entry>
+                <string>FROM_LANDSCAPE</string>
+                <fromLandscape/>
+              </entry>
+            </transformers>
+          </tableTransformers>
+          <headers>
+            <string>baseURI</string>
+            <string>BASE_PATH</string>
+            <string>ENDPOINT</string>
+            <string>REQUEST_TYPE</string>
+            <string>BODY</string>
+          </headers>
+          <data>
+            <linked-hash-map>
+              <entry>
+                <string>baseURI</string>
+                <string>http://localhost:9999/com.jaxrs.api</string>
+              </entry>
+              <entry>
+                <string>BASE_PATH</string>
+                <string>/webapi/hotels</string>
+              </entry>
+              <entry>
+                <string>ENDPOINT</string>
+                <string>/add</string>
+              </entry>
+              <entry>
+                <string>REQUEST_TYPE</string>
+                <string>POST</string>
+              </entry>
+              <entry>
+                <string>BODY</string>
+                <string>{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}</string>
+              </entry>
+            </linked-hash-map>
+          </data>
+          <properties>
+            <properties>
+              <property name="headerSeparator" value="|"/>
+              <property name="valueSeparator" value="|"/>
+              <property name="ignorableSeparator" value="|--"/>
+            </properties>
+          </properties>
+          <propertiesAsString></propertiesAsString>
+          <namedParameters/>
+        </examplesTable>
+        <steps>
+          <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+          <string>And its base path is &lt;BASE_PATH&gt;</string>
+          <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+          <string>And its body message is &lt;BODY&gt;</string>
+          <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+          <string>Then the REST API should return me a valid response</string>
+        </steps>
+      </scenario>
+      <storyPath>com/testing/stories/consult_dictionary/MyHotelService_Validation.story</storyPath>
+      <allowed>true</allowed>
+      <examplePerformableScenarios>
+        <examplePerformableScenario>
+          <parameters class="linked-hash-map">
+            <entry>
+              <string>baseURI</string>
+              <string>http://localhost:9999/com.jaxrs.api</string>
+            </entry>
+            <entry>
+              <string>BASE_PATH</string>
+              <string>/webapi/hotels</string>
+            </entry>
+            <entry>
+              <string>ENDPOINT</string>
+              <string>/add</string>
+            </entry>
+            <entry>
+              <string>REQUEST_TYPE</string>
+              <string>POST</string>
+            </entry>
+            <entry>
+              <string>BODY</string>
+              <string>{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}</string>
+            </entry>
+          </parameters>
+          <givenStories/>
+          <beforeSteps>
+            <matches/>
+          </beforeSteps>
+          <steps>
+            <matches/>
+            <results>
+              <successful>
+                <step>Given I have a Base URI &lt;baseURI&gt; for the REST API</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>Given I have a Base URI ｟http://localhost:9999/com.jaxrs.api｠ for the REST API</parametrisedStep>
+                <durationInMillis>4</durationInMillis>
+                <start>1507468648951</start>
+                <end>1507468648955</end>
+              </successful>
+              <successful>
+                <step>And its base path is &lt;BASE_PATH&gt;</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>And its base path is ｟/webapi/hotels｠</parametrisedStep>
+                <durationInMillis>3</durationInMillis>
+                <start>1507468648957</start>
+                <end>1507468648960</end>
+              </successful>
+              <successful>
+                <step>And its endpoint is &lt;ENDPOINT&gt;</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>And its endpoint is ｟/add｠</parametrisedStep>
+                <durationInMillis>3</durationInMillis>
+                <start>1507468648961</start>
+                <end>1507468648964</end>
+              </successful>
+              <successful>
+                <step>And its body message is &lt;BODY&gt;</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>And its body message is ｟{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}｠</parametrisedStep>
+                <durationInMillis>1</durationInMillis>
+                <start>1507468648965</start>
+                <end>1507468648966</end>
+              </successful>
+              <successful>
+                <step>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>When I send the ｟POST｠ request to RestAPI</parametrisedStep>
+                <durationInMillis>1105</durationInMillis>
+                <start>1507468648968</start>
+                <end>1507468650073</end>
+              </successful>
+              <successful>
+                <step>Then the REST API should return me a valid response</step>
+                <type>SUCCESSFUL</type>
+                <parametrisedStep>Then the REST API should return me a valid response</parametrisedStep>
+                <durationInMillis>2</durationInMillis>
+                <start>1507468650074</start>
+                <end>1507468650076</end>
+              </successful>
+            </results>
+          </steps>
+          <afterSteps>
+            <matches/>
+          </afterSteps>
+          <storyAndScenarioMeta>
+            <properties/>
+          </storyAndScenarioMeta>
+          <scenario>
+            <title>Verify the REST response after the POST request</title>
+            <meta>
+              <properties/>
+            </meta>
+            <givenStories>
+              <givenStories/>
+              <givenStoriesAsString></givenStoriesAsString>
+              <examplesTable>
+                <tableAsString></tableAsString>
+                <tableTransformers>
+                  <transformers>
+                    <entry>
+                      <string>FORMATTING</string>
+                      <formatting/>
+                    </entry>
+                    <entry>
+                      <string>REPLACING</string>
+                      <replacing/>
+                    </entry>
+                    <entry>
+                      <string>FROM_LANDSCAPE</string>
+                      <fromLandscape/>
+                    </entry>
+                  </transformers>
+                </tableTransformers>
+                <headers/>
+                <data/>
+                <properties>
+                  <properties>
+                    <property name="headerSeparator" value="|"/>
+                    <property name="valueSeparator" value="|"/>
+                    <property name="ignorableSeparator" value="|--"/>
+                  </properties>
+                </properties>
+                <propertiesAsString></propertiesAsString>
+                <namedParameters/>
+              </examplesTable>
+            </givenStories>
+            <examplesTable>
+              <tableAsString>|            baseURI             |  BASE_PATH   |    ENDPOINT | REQUEST_TYPE|BODY|
+|  http://localhost:9999/com.jaxrs.api|  /webapi/hotels | /add|POST| {&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}|</tableAsString>
+              <tableTransformers>
+                <transformers>
+                  <entry>
+                    <string>FORMATTING</string>
+                    <formatting/>
+                  </entry>
+                  <entry>
+                    <string>REPLACING</string>
+                    <replacing/>
+                  </entry>
+                  <entry>
+                    <string>FROM_LANDSCAPE</string>
+                    <fromLandscape/>
+                  </entry>
+                </transformers>
+              </tableTransformers>
+              <headers>
+                <string>baseURI</string>
+                <string>BASE_PATH</string>
+                <string>ENDPOINT</string>
+                <string>REQUEST_TYPE</string>
+                <string>BODY</string>
+              </headers>
+              <data>
+                <linked-hash-map>
+                  <entry>
+                    <string>baseURI</string>
+                    <string>http://localhost:9999/com.jaxrs.api</string>
+                  </entry>
+                  <entry>
+                    <string>BASE_PATH</string>
+                    <string>/webapi/hotels</string>
+                  </entry>
+                  <entry>
+                    <string>ENDPOINT</string>
+                    <string>/add</string>
+                  </entry>
+                  <entry>
+                    <string>REQUEST_TYPE</string>
+                    <string>POST</string>
+                  </entry>
+                  <entry>
+                    <string>BODY</string>
+                    <string>{&quot;hotelName&quot;: &quot;Nirvana&quot;,&quot;location&quot;: &quot;Kazhipattur&quot;,&quot;ratings&quot;: &quot;5&quot;,&quot;landmark&quot;: &quot; Opp to Victoria Towers&quot;,&quot;startedOn&quot;: &quot; 19/09/2008&quot;,&quot;famousDish&quot;: &quot;Appam&quot;}</string>
+                  </entry>
+                </linked-hash-map>
+              </data>
+              <properties>
+                <properties>
+                  <property name="headerSeparator" value="|"/>
+                  <property name="valueSeparator" value="|"/>
+                  <property name="ignorableSeparator" value="|--"/>
+                </properties>
+              </properties>
+              <propertiesAsString></propertiesAsString>
+              <namedParameters/>
+            </examplesTable>
+            <steps>
+              <string>Given I have a Base URI &lt;baseURI&gt; for the REST API</string>
+              <string>And its base path is &lt;BASE_PATH&gt;</string>
+              <string>And its endpoint is &lt;ENDPOINT&gt;</string>
+              <string>And its body message is &lt;BODY&gt;</string>
+              <string>When I send the &lt;REQUEST_TYPE&gt; request to RestAPI</string>
+              <string>Then the REST API should return me a valid response</string>
+            </steps>
+          </scenario>
+        </examplePerformableScenario>
+      </examplePerformableScenarios>
+      <status>SUCCESSFUL</status>
     </performableScenario>
   </scenarios>
 </xref>
